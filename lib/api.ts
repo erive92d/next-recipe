@@ -37,3 +37,47 @@ export const getRecipeById = async (id:string) => {
     }
 }
 
+export const getRecipeByArea = async (area:string) => {
+    try {
+        const res = await fetch(`http://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`)
+        const data = await res.json()
+        return data
+    } 
+    catch (error) {
+        throw new Error("Failed to fetch")
+
+    }
+}
+
+export const getRandomMeal = async () => {
+    try {
+        const res = await fetch("http://www.themealdb.com/api/json/v1/1/random.php")
+        const data = await res.json()
+        return data.meals[0]
+    } catch (error) {
+        throw new Error("failed to fetch")
+    }
+}
+
+export const getMealByIngredient = async (ing:string) => {
+    try {
+        const res = await fetch(`http://www.themealdb.com/api/json/v1/1/filter.php?i=chicken_breast`)
+        const data = await res.json()
+        return data.meals[0].strMealThumb
+    } catch (error) {
+        throw new Error("failed to fetch")
+    }
+}
+
+export const getMealByName = async(name:string) => {
+    try {
+        const res = await fetch(`http://www.themealdb.com/api/json/v1/1/search.php?s=${name}`)
+        const data = await res.json()
+        return data
+    } catch (error) {
+        throw new Error("Failed to search")
+    }
+}
+
+
+

@@ -1,13 +1,18 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { PromiseLikeOfReactNode, ReactNode, useState } from 'react'
 import Image from 'next/image'
-import { RecipeProps } from '@/lib/props'
+import { ItemsProps, RecipeProps } from '@/lib/props'
 import Link from 'next/link'
+import { getRecipeByArea } from '@/lib/api'
+import Suggestions from './Suggestions'
 
 interface RecipeDisplayProps {
-    recipe: RecipeProps  //temporary
+    recipe: RecipeProps | any //temporary
 }
+
+
+
 
 export default function RecipeDisplay({recipe}:RecipeDisplayProps) {
 
@@ -18,14 +23,12 @@ export default function RecipeDisplay({recipe}:RecipeDisplayProps) {
         setTab(e.currentTarget.value)
     }
 
-    console.log(recipe)
-
     const selectTab = (tab:string) => {
         if(tab === "main") {
             return (
                 <div>
                     <div>
-                        <Image className='w-full' alt="image" unoptimized width={100} height={100} src={`${recipe.strMealThumb}/preview`} />
+                        <Image className='w-full lg:w-96' alt="image" unoptimized width={10} height={10} src={`${recipe.strMealThumb}/preview`} />
                     </div> 
                     <div className='flex flex-col px-2 py-4'>
                         <h1 className='text-2xl font-bold font-serif'>{recipe.strMeal}</h1>
@@ -34,7 +37,9 @@ export default function RecipeDisplay({recipe}:RecipeDisplayProps) {
                             Source
                         </Link>
                     </div>
-                   
+                    <div>
+                        Suggestions
+                    </div>
                 </div>
                
             )
@@ -90,7 +95,7 @@ export default function RecipeDisplay({recipe}:RecipeDisplayProps) {
         if(tab === "instructions") {
             return (
                 <div>
-                    <p className='font-light p-2'>
+                    <p className='font-light text-lg italic p-2'>
                     {recipe.strInstructions}
 
                     </p>
@@ -117,7 +122,7 @@ export default function RecipeDisplay({recipe}:RecipeDisplayProps) {
   
 
     return (
-        <div className='bg-white p-4 w-96 mx-auto rounded-lg text-black'>
+        <div className='bg-white p-4 w-96 mx-auto rounded-lg text-black lg:w-full'>
                <div className="tabs tabs-boxed justify-center bg-white">
                     {tabInfo.map(({label, value}, index) => (
                         <button onClick={handleTabs}  className={`tab duration-300 font-bold font   text-black ${tab === value ? "bg-red-500 text-white" : ""}`} key={index} value={value}>
@@ -125,7 +130,10 @@ export default function RecipeDisplay({recipe}:RecipeDisplayProps) {
                         </button>
                     ))}
                 </div>
-                {selectTab(tab)}
+                <div className=''>
+                    {selectTab(tab)}
+                </div>
+                {/* <Suggestions area={recipe.strArea} /> */}
         </div>
       )
 }
