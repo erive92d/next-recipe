@@ -9,34 +9,39 @@ export default function InputComp() {
     const [inputText, setInputText] = useState<string>("")
     const [searchResult, setResult] = useState<RecipeProps[] | null>(null)
 
-    const debouncedValue  = useDebounce(inputText, 1000)
+    const debouncedValue = useDebounce(inputText, 2000)
 
     useEffect(() => {
         const grabMeal = async () => {
-            if(debouncedValue) {
+            if (debouncedValue) {
                 const res = await getMealByName(debouncedValue)
-                if(res) {
-                    setResult(res)
+                if (res) {
+                    setResult(res.meals)
                 }
             }
-            
-        }
 
+        }
         grabMeal()
     }, [debouncedValue])
-
-    console.log(searchResult)
-
-
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault()
         setInputText(e.currentTarget.value)
     }
 
-  return (
-    <div className='text-center p-2'>
-        <input type="text" onChange={handleChange} placeholder='search for a recipe...' className='input mx-auto input-bordered w-96 bg-white text-black' />
-    </div>
-  )
+    return (
+        <div className='p-2'>
+            <div className='text-center'>
+                <input type="text" onChange={handleChange} placeholder='search for a recipe...' className='input input-bordered w-96 bg-white text-black' />
+            </div>
+            <div className=' max-h-40 overflow-y-auto w-96 mx-auto'>
+                {searchResult && searchResult.map((result) => (
+                    <div key={result.idMeal}>
+                        <h1>{result.strMeal}</h1>
+                    </div>
+                ))}
+            </div>
+
+        </div>
+    )
 }
