@@ -31,7 +31,7 @@ export default function InputComp() {
     }
 
     return (
-        <div className='p-2 text-gray-800'>
+        <div className='p-2 text-gray-800 h-screen flex flex-col'>
             <div className='flex p-4 justify-between text-lg border items-center rounded-lg w-96 mx-auto'>
                 <input onChange={handleChange} type="text" className='w-96 focus:outline-none bg-white' placeholder='search for a recipe..' />
                 <FiSearch />
