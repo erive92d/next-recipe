@@ -12,10 +12,7 @@ export const authOptions: AuthOptions = {
           }),
         CredentialsProvider({
             name: "credentials",
-            credentials: {
-                email: {label: "Email", type: "email", placeholder: "test@email.com"},
-                password: {label: "Password", type: "password", placeholder: "xxxxxx"}
-            },
+            credentials: {},
 
             async authorize(credentials:any, req) {
             
@@ -51,7 +48,7 @@ export const authOptions: AuthOptions = {
     
     secret: process.env.NEXTAUTH_SECRET,
     pages: {
-        signIn: "/auth/signIn"
+        signIn: "/auth/login"
     },
     
     session: {

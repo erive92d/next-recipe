@@ -1,12 +1,22 @@
 import LoginBtn from '@/components/LoginBtn'
+import { getServerSession } from 'next-auth'
+import { redirect } from 'next/navigation'
 import React from 'react'
+import { authOptions } from '../api/auth/[...nextauth]/route'
+import { signOut } from 'next-auth/react'
+import SignoutBtn from '@/components/SignoutBtn'
+
 export default async function page() {
 
-
+  const session = await getServerSession(authOptions)
+  console.log(session, "session")
+  if(!session) {
+    redirect("/auth/login")
+  }
   return (
     <div>
-      RECIPE
-      <LoginBtn/>
+      <h1>Welcome {session?.user?.name}</h1>
+      <SignoutBtn/>
     </div>
   )
 }
