@@ -30,6 +30,8 @@ export default function InputComp() {
         setInputText(e.currentTarget.value)
     }
 
+   
+
     return (
         <div className='p-2 text-gray-800 h-screen flex flex-col'>
             <div className='flex p-4 justify-between text-lg border items-center rounded-lg w-96 mx-auto'>
