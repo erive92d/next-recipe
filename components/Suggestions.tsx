@@ -17,7 +17,6 @@ export default async function Suggestions(area:string) {
             {meals && meals.map((meal) => (
                 <div key={meal.idMeal}>
                     <h1>{meal.strMeal}</h1>
-
                 </div>
             ))}
         </div>
