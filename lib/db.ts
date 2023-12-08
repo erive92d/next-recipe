@@ -1,10 +1,13 @@
 import mongoose, { ConnectOptions } from 'mongoose';
 
 const dbConnect = async () => {
-    const uri = process.env.MONGODB_URL
+  const local_uri = "mongodb://localhost:27017/recipe-db"
+  const production_uri = process.env.MONGODB_URL
 
-    const local_uri = "mongodb://localhost:27017/task-manager"
 
+  const uri = process.env.NODE_ENV === "development" ? local_uri : production_uri
+ 
+ 
     if(!uri) {
         throw new Error(
             'No Mongo url available'

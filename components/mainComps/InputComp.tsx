@@ -18,7 +18,7 @@ export default function InputComp() {
             if (debouncedValue) {
                 const res = await getMealByName(debouncedValue)
                 if (res) {
-                    setResult(res.meals)
+                    setResult(res.meals.slice(0,2))
                 }
             }
         }
@@ -27,30 +27,33 @@ export default function InputComp() {
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault()
+        if(!e.currentTarget.value) {
+            setResult([])
+        }
         setInputText(e.currentTarget.value)
     }
 
-   
 
     return (
-        <div className='p-2 text-gray-800 h-screen flex flex-col'>
-            <div className='flex p-4 justify-between text-lg border items-center rounded-lg w-96 mx-auto'>
-                <input onChange={handleChange} type="text" className='w-96 focus:outline-none bg-white' placeholder='search for a recipe..' />
+        <div className='p-2 text-gray-800 flex flex-col'>
+            <div className='flex shadow-lg p-4 justify-between bg-white text-lg border items-center rounded-md w-96 mx-auto'>
+                <input value={inputText} onChange={handleChange} type="text" className='w-96 focus:outline-none bg-white' placeholder='search for a recipe..' />
                 <FiSearch />
             </div>
-            {/* <div className='text-center'>
-                <input type="text" onChange={handleChange} placeholder='search for a recipe...' className='input input-bordered w-96 bg-white text-black' />
-            
-            </div> */}
-            <div className='px-4 max-h-40 overflow-y-auto w-96 mx-auto'>
-                {searchResult && searchResult.map((result) => (
-                    <Link href={`/recipe/${result.idMeal}`} key={result.idMeal} className="border-b flex gap-2 items-center">
-                        <h1>{result.strMeal} </h1>
-                        <span className='badge badge-warning badge-sm text-white'> {result.strArea}</span>
-                    </Link>
-                ))}
+            <div className='px-4 max-h-40 overflow-y-auto w-full mx-auto'>
+                {searchResult ? searchResult.map((result) => (
+                    <div className='bg-white px-3 border-b' key={result.idMeal}>
+                        <Link href={`/recipe/${result.idMeal}`} className=" flex gap-2 items-center">
+                              <h1>{result.strMeal} </h1>
+                              <span className='badge badge-warning badge-sm text-white'> {result.strArea}</span>
+                         </Link>
+                    </div>
+                 
+                ))
+            :
+            null
+            }
             </div>
-
         </div>
     )
 }

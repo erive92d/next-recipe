@@ -23,10 +23,9 @@ export const authOptions: AuthOptions = {
                     },
                     body: JSON.stringify(credentials)
                 })
-            
-               
+
                 const user = await response.json()
-                
+               
                 if(response.ok && user) {
                     return user
                 } 

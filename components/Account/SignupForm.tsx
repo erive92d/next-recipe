@@ -32,7 +32,6 @@ export default function SignupForm() {
 
     const handleSubmit = async(e:React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
-        console.log(inputData)
         if(inputData.password !== inputData.validatePass) {
             setError("Passwords provided doesn't match")
             return
@@ -43,7 +42,8 @@ export default function SignupForm() {
             headers: {
                 "Content-Type":"application/json"
             },
-            body: JSON.stringify(inputData)
+            body: JSON.stringify(inputData),
+            cache:"no-cache"
         })
 
         if(response.status === 301) {
@@ -53,10 +53,7 @@ export default function SignupForm() {
         
         if(response.ok) {
             router.push("/recipe")
-        }
-
-
-        
+        } 
     }
     
 
@@ -70,7 +67,6 @@ export default function SignupForm() {
                     <input value={inputData.validatePass} name="validatePass" type="password"  onChange={handleChange} className='input bg-white' placeholder='validate password..' />
                     <button onClick={handleSubmit}  className='btn btn-sm btn-success'>Register</button>
                     {error && <h1 className=' btn btn-sm btn-error'>{error}</h1>}
-
             </div>
         </div>
       )

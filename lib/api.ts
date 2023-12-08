@@ -11,7 +11,7 @@ export const getSeaFood = async () => {
 export const getCategories = async () => {
     try {
         const res = await fetch(`https://www.themealdb.com/api/json/v1/1/list.php?c=list`)
-        return res
+        return await res.json()
     } catch (error) {
         throw new Error("Failed to fetch")
     }
@@ -51,7 +51,7 @@ export const getRecipeByArea = async (area:string) => {
 
 export const getRandomMeal = async () => {
     try {
-        const res = await fetch("https://www.themealdb.com/api/json/v1/1/random.php")
+        const res = await fetch("https://www.themealdb.com/api/json/v1/1/random.php", {cache:"no-cache"})
         const data = await res.json()
         return data.meals[0]
     } catch (error) {
