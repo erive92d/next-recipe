@@ -5,6 +5,7 @@ import { RecipeProps } from '@/lib/props'
 import Link from '@/node_modules/next/link'
 import React, { useEffect, useState } from 'react'
 import { FiSearch } from "react-icons/fi"
+import Featured from './Featured'
 
 export default function InputComp() {
 
@@ -45,6 +46,7 @@ export default function InputComp() {
                     <Link href={`/recipe/${result.idMeal}`} key={result.idMeal} className="border-b flex gap-2 items-center">
                         <h1>{result.strMeal} </h1>
                         <span className='badge badge-warning badge-sm text-white'> {result.strArea}</span>
+
                     </Link>
                 ))}
             </div>

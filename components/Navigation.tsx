@@ -5,8 +5,7 @@ import { useState } from "react"
 import { FiSearch } from "react-icons/fi"
 
 export default function Navigation() {
-  const [showInput, setShowInput] = useState<boolean>(false)
-
+  
 
   return (
     <div className='bg-white  p-4 space-y-2'>
