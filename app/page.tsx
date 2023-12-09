@@ -1,16 +1,20 @@
-import Categories from '@/components/Categories'
-import Items from '@/components/Items'
-import { getCategories, getSeaFood } from '@/lib/api'
+
+import Categories from '@/components/mainComps/Categories'
 import InputComp from '@/components/mainComps/InputComp'
-import Featured from '@/components/mainComps/Featured'
+import RandomRecipe from '@/components/mainComps/RandomRecipe'
+import { getCategories, getRandomMeal } from '@/lib/api'
 
 export default async function Home() {
 
   return (
-    <div className='bg-white'>
-      <div>
+    <div className='bg-slate-200 h-screen flex flex-col lg:flex-row gap-4'>
+      <div className='space-y-4'>
         <InputComp />
-        <Featured />
+        <Categories />
+      </div>
+      <div>
+        <h1 className='text-gray-500 font-2xl font-bold px-2'>Recommended for you</h1>
+        <RandomRecipe />
       </div>
     </div>
   )
