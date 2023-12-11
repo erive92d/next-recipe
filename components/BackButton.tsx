@@ -7,7 +7,7 @@ export default function BackButton() {
     const router = useRouter()
 
     return (
-        <button onClick={() => router.back()} className='btn btn-sm '>
+        <button onClick={() => router.back()} className='btn  btn-ghost'>
             <IoIosArrowBack />
         </button>
     )

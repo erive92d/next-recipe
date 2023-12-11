@@ -4,6 +4,10 @@ const dbConnect = async () => {
   const local_uri = "mongodb://localhost:27017/recipe-db"
   const production_uri = process.env.MONGODB_URL
 
+  if(!production_uri) {
+    throw new Error("No uri")
+  }
+
 
   const uri = process.env.NODE_ENV === "development" ? local_uri : production_uri
  
@@ -18,7 +22,7 @@ const dbConnect = async () => {
       } as ConnectOptions; 
     
       try {
-        await mongoose.connect(uri, options)
+        await mongoose.connect(production_uri, options)
         console.log("Mongo connection success")
       } catch (error) {
         throw new Error("Error in connecting to MongoDb")

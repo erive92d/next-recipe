@@ -40,7 +40,7 @@ export default function LoginForm() {
         }
 
        if(response?.status === 200) {
-            router.push("/recipe")
+            router.push("/")
        }
     }
 
