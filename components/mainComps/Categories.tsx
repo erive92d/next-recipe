@@ -41,12 +41,28 @@ export default async function Categories() {
                 ))}
                 <div className="w-2/6 text-gray-600 p-2 ">
                     <div className='flex flex-col justify-center items-center bg-orange-400 text-white rounded-sm'>
-                        <button className=''>....</button>
+                        <ModalCategories />
                     </div>
                 </div>
             </div>
+        </div>
+    )
+}
 
+function ModalCategories() {
+    return (
+        <div>
+            <a href="#my_modal_8" className="">...</a>
 
+            <div className="modal" role="dialog" id="my_modal_8">
+                <div className="modal-box text-black">
+                    <h3 className="font-bold text-lg">Hello!</h3>
+                    <p className="py-4">This modal works with anchor links</p>
+                    <div className="modal-action">
+                        <a href="#" className="btn">Yay!</a>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
