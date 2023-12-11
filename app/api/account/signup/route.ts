@@ -23,7 +23,7 @@ export async function POST(req: NextRequest, res:NextResponse) {
         }
 
         const createUser = new User(newUser)
-       
+        console.log(createUser)
         createUser.save()
 
         return new NextResponse(JSON .stringify(createUser), {status:200})

@@ -5,7 +5,6 @@ import { RecipeProps } from '@/lib/props'
 import Link from '@/node_modules/next/link'
 import React, { useEffect, useState } from 'react'
 import { FiSearch } from "react-icons/fi"
-import Featured from './Featured'
 
 export default function InputComp() {
 
@@ -21,6 +20,7 @@ export default function InputComp() {
                 if (res.meals) {
                     setResult(res.meals.slice(0, 2))
                 } else {
+                    setResult(null)
                     setError("No result")
                 }
             }

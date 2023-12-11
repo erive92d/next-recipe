@@ -6,6 +6,8 @@ import { ItemsProps, RecipeProps } from '@/lib/props'
 import Link from 'next/link'
 import { getRecipeByArea } from '@/lib/api'
 import Suggestions from './Suggestions'
+import BackButton from './BackButton'
+import SaveButton from './SaveButton'
 
 interface RecipeDisplayProps {
     recipe: RecipeProps | any //temporary
@@ -31,7 +33,10 @@ export default function RecipeDisplay({ recipe }: RecipeDisplayProps) {
                         <Image className='w-full lg:w-96' alt="image" unoptimized width={10} height={10} src={`${recipe.strMealThumb}/preview`} />
                     </div>
                     <div className='flex flex-col px-2 py-4'>
-                        <h1 className='text-2xl font-bold font-serif'>{recipe.strMeal}</h1>
+                        <div className='flex justify-between items-center'>
+                            <h1 className='text-2xl font-bold font-serif'>{recipe.strMeal}</h1>
+                            <SaveButton recipeId={recipe.idMeal}/>
+                        </div>
                         <p className='text-lg font-semibold'>{recipe.strArea}</p>
                         <Link className='link text-right' href={recipe.strSource} target='_black'>
                             Source
@@ -120,7 +125,10 @@ export default function RecipeDisplay({ recipe }: RecipeDisplayProps) {
 
     return (
         <div className='my-4 h-screen bg-white p-2 w-96 mx-auto rounded-lg text-black lg:w-full'>
-            <div className="tabs tabs-boxed justify-center bg-white">
+            <div>
+            </div>
+            <div className="tabs tabs-boxed items-center justify-around bg-white">
+                <BackButton/>
                 {tabInfo.map(({ label, value }, index) => (
                     <button onClick={handleTabs} className={`tab duration-300 font-bold font   text-black ${tab === value ? "bg-red-500 text-white" : ""}`} key={index} value={value}>
                         {label}

@@ -3,8 +3,12 @@ import Categories from '@/components/mainComps/Categories'
 import InputComp from '@/components/mainComps/InputComp'
 import RandomRecipe from '@/components/mainComps/RandomRecipe'
 import { getCategories, getRandomMeal } from '@/lib/api'
+import { getServerSession } from 'next-auth'
+import { authOptions } from './api/auth/[...nextauth]/route'
+import { redirect } from 'next/navigation'
 
 export default async function Home() {
+
 
   return (
     <div className='bg-slate-200 h-screen flex flex-col lg:flex-row gap-4'>
