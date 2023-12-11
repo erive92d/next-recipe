@@ -51,7 +51,7 @@ export const getRecipeByArea = async (area: string) => {
 
 export const getRandomMeal = async () => {
     try {
-        const res = await fetch("https://www.themealdb.com/api/json/v1/1/random.php", { cache: "no-cache" })
+        const res = await fetch("https://www.themealdb.com/api/json/v1/1/random.php", { next: { revalidate: 5 } })
         const data = await res.json()
         return data.meals[0]
     } catch (error) {

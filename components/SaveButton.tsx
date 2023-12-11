@@ -5,21 +5,20 @@ import { useRouter } from 'next/navigation'
 import React from 'react'
 
 type SaveType = {
-    recipeId:string
+  recipeId: string
 }
 
-export default function SaveButton({recipeId}:SaveType) {
-    const router = useRouter()
-    const session = useSession()
-    console.log(session)
+export default function SaveButton({ recipeId }: SaveType) {
+  const router = useRouter()
+  const session = useSession()
 
-    const handleSave = (e:React.MouseEvent<HTMLButtonElement>) => {
-        e.preventDefault()
+  const handleSave = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
 
-        
 
-       
-    }
+
+
+  }
 
   return (
     <button onClick={handleSave} className='btn btn-sm text-white btn-success'>save</button>

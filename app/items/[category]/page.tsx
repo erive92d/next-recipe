@@ -1,4 +1,4 @@
-import { searchByCategory } from '@/lib/api'
+import { getCategories, searchByCategory } from '@/lib/api'
 import { ItemsProps } from '@/lib/props'
 import React from 'react'
 import Image from 'next/image'
@@ -15,13 +15,24 @@ interface RecipeProps {
     meals: ItemsProps[]
 }
 
+export async function generateStaticParams() {
+    //GRAB STATIC PATHS FROM MEALS CATEGORIES
+    const { meals } = await getCategories()
+    return meals.map((cat: { strCategory: any }) => (
+        {
+            category: cat.strCategory
+        }
+    ))
+}
+async function getCategory(category: string) {
+    //SEARCH CATEGORY 
+    const recipe: RecipeProps = await searchByCategory(category)
+    return recipe
+}
+
 export default async function page({ params: { category } }: ParamProps) {
 
-    const recipe: RecipeProps = await searchByCategory(category)
-
-    if (!recipe) {
-        return <h1>Loading..</h1>
-    }
+    const data = await getCategory(category)
 
     return (
         <div className=''>
@@ -30,7 +41,7 @@ export default async function page({ params: { category } }: ParamProps) {
                 <h1 className='text-right text-2xl font-bold'>{category}</h1>
             </div>
             <div className='flex flex-wrap lg:p-6 '>
-                {recipe.meals.map((rec) => (
+                {data.meals.map((rec) => (
                     <div key={rec.idMeal} className='p-2 card w-2/4 lg:w-1/4'>
                         <div className="bg-white h-80 rounded-xl shadow-xl lg:h-96">
                             <figure className="">

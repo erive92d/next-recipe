@@ -11,10 +11,14 @@ interface ParamProps {
     }
 }
 
+async function getRecipe(id: string) {
+    const recipe = await getRecipeById(id)
+    return recipe
+}
+
 
 export default async function page({ params: { id } }: ParamProps) {
-
-    const { meals } = await getRecipeById(id)
+    const { meals } = await getRecipe(id)
     const recipe: RecipeProps = meals[0]
 
     if (!recipe) return <h1>Loading..</h1>
