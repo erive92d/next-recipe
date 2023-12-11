@@ -29,7 +29,9 @@ export default function Navigation() {
                 <h1>Hello {session?.data?.user?.name}</h1>
               </div>
               <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white rounded-box w-52">
-                <li><a>View Profile</a></li>
+                <li>
+                  <button onClick={() => router.push("/profile")} className='btn btn-ghost btn-sm'>Profile</button>
+                </li>
                 <li>
                   <SignoutBtn />
                 </li>

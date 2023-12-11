@@ -9,9 +9,9 @@ export default function LoginForm() {
     const [userInput, setUserInput] = useState({
         email: "",
         password: ""
-      })
+    })
 
-    const [error, setError] = useState<boolean>(false)  
+    const [error, setError] = useState<boolean>(false)
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault()
@@ -20,7 +20,7 @@ export default function LoginForm() {
         setUserInput(
             {
                 ...userInput,
-                [name]:value
+                [name]: value
             }
         )
     }
@@ -34,22 +34,23 @@ export default function LoginForm() {
             redirect: false,
         })
 
-   
-        if(!response?.ok) {
+
+        if (!response?.ok) {
             setError(true)
         }
 
-       if(response?.status === 200) {
-            router.push("/")
-       }
+        if (response?.status === 200) {
+
+            router.back()
+        }
     }
 
-      return (
+    return (
         <div className='h-screen flex flex-col justify-center items-center gap-4'>
             <div className=''>Login</div>
             <div className='flex flex-col gap-2'>
-                <input onChange={handleChange} type="email" name="email" className='input bg-white' placeholder='email...'/>
-                <input onChange={handleChange} type="password" name="password" className='input bg-white' placeholder='password..'/>            
+                <input onChange={handleChange} type="email" name="email" className='input bg-white' placeholder='email...' />
+                <input onChange={handleChange} type="password" name="password" className='input bg-white' placeholder='password..' />
             </div>
             <div className='flex  gap-2'>
                 <button onClick={handleSubmit} className='btn btn-sm btn-success'>Log In</button>
@@ -62,5 +63,5 @@ export default function LoginForm() {
             </div>
             {error && <h1 className='btn btn-error'>Invalid Credentials</h1>}
         </div>
-      )
+    )
 }

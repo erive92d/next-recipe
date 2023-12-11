@@ -4,7 +4,7 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { AiOutlineArrowRight } from 'react-icons/ai'
-import BackButton from '@/components/BackButton'
+import BackButton from '@/components/Actions/BackButton'
 interface ParamProps {
     params: {
         category: string

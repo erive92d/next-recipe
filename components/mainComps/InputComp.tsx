@@ -5,6 +5,7 @@ import { RecipeProps } from '@/lib/props'
 import Link from '@/node_modules/next/link'
 import React, { useEffect, useState } from 'react'
 import { FiSearch } from "react-icons/fi"
+import { useRouter } from '@/node_modules/next/navigation'
 
 export default function InputComp() {
 
