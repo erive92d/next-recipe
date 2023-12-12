@@ -10,7 +10,7 @@ type PeopleChoiceType = {
 
 export default async function PeopleChoice() {
 
-    const response = await fetch(`http://localhost:3000/api/recipe`, {
+    const response = await fetch(`/api/recipe`, {
         method: "GET",
         cache: "no-store"
     })
