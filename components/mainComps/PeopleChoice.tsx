@@ -11,9 +11,8 @@ type PeopleChoiceType = {
 async function grabSaves() {
     try {
         const response = await fetch(`${serverUrl}/api/recipe`, {
-            cache: "no-store"
+            cache: "no-cache"
         })
-
         const save: PeopleChoiceType[] = await response.json()
         return save
     } catch (error) {
@@ -24,7 +23,7 @@ async function grabSaves() {
 
 export default async function PeopleChoice() {
     const save = await grabSaves()
-
+    console.log(save)
     if (!save) return <h1>loading...</h1>
 
     return (
