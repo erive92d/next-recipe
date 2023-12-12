@@ -7,7 +7,9 @@ export async function GET(req: NextRequest, res: NextResponse) {
     try {
         await dbConnect()
         const recipes = await Recipe.find({})
-
+        if (!recipes) {
+            throw new Error("No recipes found")
+        }
         return NextResponse.json(recipes, { status: 200 })
 
     } catch (error) {
