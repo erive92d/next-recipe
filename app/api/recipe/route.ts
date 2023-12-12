@@ -27,8 +27,9 @@ export async function POST(req: NextRequest, res: NextResponse) {
                 id,
                 name: name,
                 image: image,
-                users: user
+                users: user.id
             })
+
             await createRecipe.save()
 
             return NextResponse.json(createRecipe, { status: 200 })

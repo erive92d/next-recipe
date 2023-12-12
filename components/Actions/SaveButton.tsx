@@ -12,27 +12,28 @@ type SaveType = {
 export default function SaveButton({ recipe }: SaveType) {
   const router = useRouter()
   const session = useSession()
+  const currentUser = session?.data?.user
 
   if (!session.data) {
-    alert("Needs to be logged in")
     return
   }
 
   const handleSave = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
 
-    if (session.status === "unauthenticated") {
+    if (session.status !== "authenticated") {
       const userConfirm = confirm("Log in required")
       if (userConfirm) {
         router.push("/auth/login")
       }
     }
 
+
     const userData = {
       id: recipe.idMeal,
       name: recipe.strMeal,
       image: recipe.strMealThumb,
-      user: session.data.user.id
+      user: currentUser
     }
 
 

@@ -17,7 +17,7 @@ export default async function Home() {
         <RandomRecipe />
       </div>
       <div>
-        <h1 className='text-gray-500 font-2xl font-bold px-2'>Peoples' choice</h1>
+        <h1 className='text-gray-500 font-2xl font-bold px-2'>Peoples choice</h1>
         <PeopleChoice />
       </div>
     </div>
