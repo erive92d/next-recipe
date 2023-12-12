@@ -8,14 +8,17 @@ type PeopleChoiceType = {
 
 }
 
-export default async function PeopleChoice() {
-
-    const response = await fetch(`/api/recipe`, {
-        method: "GET",
+async function grabSaves() {
+    const response = await fetch(`http://localhost:3000/api/recipe`, {
         cache: "no-store"
     })
 
     const save: PeopleChoiceType[] = await response.json()
+    return save
+}
+
+export default async function PeopleChoice() {
+    const save = await grabSaves()
 
     return (
         <div className="p-2 bg-white">
