@@ -1,4 +1,5 @@
 
+import serverUrl from "@/lib/serverUrl";
 import NextAuth, { AuthOptions } from "next-auth";
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GithubProvider from "next-auth/providers/github"
@@ -16,7 +17,7 @@ export const authOptions: AuthOptions = {
 
       async authorize(credentials: any, req) {
 
-        const response = await fetch(`${process.env.NEXTAUTH_URL}/api/account/login`, {
+        const response = await fetch(`${serverUrl}/api/account/login`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json"

@@ -18,7 +18,7 @@ export default async function Home() {
       </div>
       <div>
         <h1 className='text-gray-500 font-2xl font-bold px-2'>Peoples choice</h1>
-        {/* <PeopleChoice /> */}
+        <PeopleChoice />
       </div>
     </div>
   )

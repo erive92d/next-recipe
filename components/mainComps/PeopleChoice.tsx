@@ -1,5 +1,5 @@
 import { getRecipeById } from "@/lib/api"
-
+import serverUrl from "@/lib/serverUrl"
 type PeopleChoiceType = {
     id: string,
     name: string,
@@ -9,7 +9,7 @@ type PeopleChoiceType = {
 }
 
 async function grabSaves() {
-    const response = await fetch(`http://localhost:3000/api/recipe`, {
+    const response = await fetch(`${serverUrl}/api/recipe`, {
         cache: "no-store"
     })
 
