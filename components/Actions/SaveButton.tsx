@@ -37,7 +37,7 @@ export default function SaveButton({ recipe }: SaveType) {
     }
 
 
-    const response = await fetch(`/api/recipe`, {
+    const response = await fetch(`/api/saverecipe`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
