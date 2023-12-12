@@ -35,7 +35,7 @@ export default function RecipeDisplay({ recipe }: RecipeDisplayProps) {
                     <div className='flex flex-col px-2 py-4'>
                         <div className='flex justify-between items-center'>
                             <h1 className='text-2xl font-bold font-serif'>{recipe.strMeal}</h1>
-                            <SaveButton recipeId={recipe.idMeal} />
+                            <SaveButton recipe={recipe} />
                         </div>
                         <p className='text-lg font-semibold'>{recipe.strArea}</p>
                         <Link className='link text-right' href={recipe.strSource} target='_black'>

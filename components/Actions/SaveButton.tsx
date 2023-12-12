@@ -1,16 +1,22 @@
 "use client"
 
+import { RecipeProps } from '@/lib/props'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 
 type SaveType = {
-  recipeId: string
+  recipe: RecipeProps
 }
 
-export default function SaveButton({ recipeId }: SaveType) {
+export default function SaveButton({ recipe }: SaveType) {
   const router = useRouter()
   const session = useSession()
+
+  if (!session.data) {
+    alert("Needs to be logged in")
+    return
+  }
 
   const handleSave = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
@@ -23,9 +29,12 @@ export default function SaveButton({ recipeId }: SaveType) {
     }
 
     const userData = {
-      id: recipeId,
+      id: recipe.idMeal,
+      name: recipe.strMeal,
+      image: recipe.strMealThumb,
       user: session.data.user.id
     }
+
 
     const response = await fetch(`/api/recipe`, {
       method: "POST",
@@ -36,13 +45,9 @@ export default function SaveButton({ recipeId }: SaveType) {
       cache: "no-store"
     })
 
-    console.log(response)
-
     if (response.ok) {
       alert("Recipe has been saved")
     }
-
-
 
   }
 

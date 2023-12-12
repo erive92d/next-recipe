@@ -16,21 +16,27 @@ export async function GET(req: NextRequest, res: NextResponse) {
 }
 
 export async function POST(req: NextRequest, res: NextResponse) {
-    const { id, user } = await req.json()
-
+    const { id, name, image, user } = await req.json()
     try {
         await dbConnect()
-        const recipe = await Recipe.findOneAndUpdate(
-            { id: id },
-            { addToSet: { users: user } },
-            { new: true }
-        )
+
+        const recipe = await Recipe.findOne({ id: id })
+
         if (!recipe) {
             const createRecipe = await Recipe.create({
-                id, users: user
+                id,
+                name: name,
+                image: image,
+                users: user
             })
+            await createRecipe.save()
+
             return NextResponse.json(createRecipe, { status: 200 })
         }
+        recipe.users.addToSet(user)
+
+        await recipe.save()
+
         return NextResponse.json(recipe, { status: 200 })
 
     } catch (error) {
