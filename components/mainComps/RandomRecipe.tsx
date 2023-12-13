@@ -15,7 +15,7 @@ export default async function RandomRecipe() {
       </div>
       <div className="w-1/2 text-center">
         <h1 className="text-lg  p-2">{recipe.strMeal}</h1>
-        <button className="btn btn-warning btn-sm text-white">
+        <button className="btn btn-accent btn-sm text-white">
           <Link href={`/recipe/${recipe.idMeal}`} >
             View recipe
           </Link>

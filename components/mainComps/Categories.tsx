@@ -18,10 +18,11 @@ export default async function Categories() {
 
     return (
         <div className=' bg-white'>
+            <h1 className='p-2  font-bold text-gray-600'>Popular Categories</h1>
             <div className='flex-wrap hidden lg:flex'>
                 {meals && meals.map((cat, index) => (
                     <div key={index} className="w-2/6 text-gray-600 p-2 ">
-                        <div className=' flex flex-col justify-center items-center bg-orange-400 text-white rounded-sm'>
+                        <div className=' flex flex-col justify-center items-center bg-green-500 text-white rounded-sm'>
                             <Link href={`/items/${cat.strCategory}`} className="">
                                 <h2 className="">{cat.strCategory}</h2>
                             </Link>
@@ -32,7 +33,7 @@ export default async function Categories() {
             <div className='flex flex-wrap bg-white p-4 lg:hidden'>
                 {slicedMeals && slicedMeals.map((cat, index) => (
                     <div key={index} className="w-2/6 text-gray-600 p-2 ">
-                        <div className=' flex flex-col justify-center items-center bg-orange-400 text-white rounded-sm'>
+                        <div className=' flex flex-col py-6 justify-center items-center  text-gray-600 shadow-xl border  rounded-lg'>
                             <Link href={`/items/${cat.strCategory}`} className="">
                                 <h2 className="">{cat.strCategory}</h2>
                             </Link>
@@ -40,7 +41,7 @@ export default async function Categories() {
                     </div>
                 ))}
                 <div className="w-2/6 text-gray-600 p-2 ">
-                    <div className='flex flex-col justify-center items-center bg-orange-400 text-white rounded-sm'>
+                    <div className='flex flex-col justify-center items-center  py-6  text-gray-600 shadow-lg rounded-sm'>
                         <ModalCategories />
                     </div>
                 </div>

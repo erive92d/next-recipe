@@ -14,8 +14,7 @@ export default async function PeopleChoice() {
     const save: PeopleChoiceType[] = await grabSaves()
 
     return (
-        <div className="p-2 bg-white">
-
+        <div className="p-2 bg-white h-20 overflow-scroll">
             {save ? save.map((res) => (
                 <div key={res.id} className="flex justify-between">
                     <h1>{res.name}</h1>

@@ -11,7 +11,7 @@ export default function Navigation() {
   const session = useSession()
 
   return (
-    <div className="navbar bg-white">
+    <div className="navbar bg-green-500 text-gray-200">
       <div className="navbar-start">
         <a className="btn btn-ghost text-xl">eat-o</a>
       </div>

@@ -2,12 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import Navigation from '@/components/Navigation'
-import NavBottom from '@/components/NavBottom'
 import NextAuthProvider from '@/Provider'
-import { getServerSession } from 'next-auth'
-import { authOptions } from './api/auth/[...nextauth]/route'
-import { redirect } from 'next/navigation'
-import { getURL } from 'next/dist/shared/lib/utils'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -27,13 +22,13 @@ export default async function RootLayout({
       <body className=" bg-gray-200 min-h-screen">
         <NextAuthProvider>
           <div className='lg:w-3/4 lg:mx-auto lg:border relative'>
-              <header>
-                <Navigation/>
-              </header>
-              {children}
-           </div>
+            <header>
+              <Navigation />
+            </header>
+            {children}
+          </div>
         </NextAuthProvider>
-        </body>
+      </body>
     </html>
   )
 }
