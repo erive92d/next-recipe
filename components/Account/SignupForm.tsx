@@ -39,7 +39,7 @@ export default function SignupForm() {
             return
         }
 
-        const response = await fetch(`${serverUrl}/api/account/signup`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/account/signup`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -54,7 +54,7 @@ export default function SignupForm() {
         }
 
         if (response.ok) {
-            router.push("/recipe")
+            router.push("/")
         }
     }
 
