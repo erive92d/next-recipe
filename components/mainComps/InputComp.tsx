@@ -40,8 +40,8 @@ export default function InputComp() {
 
 
     return (
-        <div className='p-2 text-gray-800 flex flex-col'>
-            <div className='flex shadow-lg p-4 justify-between bg-white text-lg border items-center rounded-md w-96 mx-auto'>
+        <div className='py-6 text-gray-800 flex flex-col'>
+            <div className='flex shadow-lg p-4 justify-between bg-white text-lg  items-center rounded-md w-96 mx-auto'>
                 <input value={inputText} onChange={handleChange} type="text" className='w-96 focus:outline-none bg-white' placeholder='search for a recipe..' />
                 <FiSearch />
             </div>

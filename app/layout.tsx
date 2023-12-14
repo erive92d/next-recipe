@@ -19,7 +19,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className=" bg-gray-200 min-h-screen">
+      <body className="bg-white min-h-screen">
         <NextAuthProvider>
           <div className='lg:w-3/4 lg:mx-auto lg:border relative'>
             <header>
