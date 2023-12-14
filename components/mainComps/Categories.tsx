@@ -1,7 +1,8 @@
-import { getCategories } from '@/lib/api'
+import mealAmount from '@/helpers/amountMeal'
+import { getCategories, searchByCategory } from '@/lib/api'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { AiOutlineArrowRight } from "react-icons/ai"
 
 interface CatProps {
@@ -10,11 +11,12 @@ interface CatProps {
     }[]
 }
 
+
 export default async function Categories() {
 
     const res = await getCategories()
     const { meals }: CatProps = res
-    const slicedMeals = meals.slice(0, 5)
+    const slicedMeals = meals.slice(0, 6)
 
     return (
         <div className='text-gray-600 w-96 mx-auto rounded-lg shadow-gray-400 shadow-xl font-light'>
@@ -33,18 +35,20 @@ export default async function Categories() {
             <div className='flex flex-wrap bg-white p-4 lg:hidden '>
                 {slicedMeals && slicedMeals.map((cat, index) => (
                     <div key={index} className="w-2/6  p-2 ">
-                        <div className=' flex flex-col py-6 justify-center items-center   shadow-lg shadow-gray-300 rounded-lg'>
+                        <div className=' flex flex-col justify-center py-6 items-center  shadow-lg shadow-gray-300 rounded-lg'>
                             <Link href={`/items/${cat.strCategory}`} className="">
                                 <h2 className="">{cat.strCategory}</h2>
+                                {/* <p className='text-xs italic text-gray-400'>
+                                    {mealAmount(cat.strCategory)} meals
+                                </p> */}
                             </Link>
                         </div>
                     </div>
                 ))}
-                <div className="w-2/6  p-2 ">
-                    <div className='flex flex-col justify-center items-center  py-6   shadow-lg shadow-gray-300  rounded-lg'>
-                        <ModalCategories />
-                    </div>
-                </div>
+
+            </div>
+            <div className='text-right'>
+                <a className=' px-2 link'>all categories</a>
             </div>
         </div>
     )
