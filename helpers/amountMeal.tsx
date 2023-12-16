@@ -10,7 +10,7 @@ export default async function MealAmount({ cat }: MealAmountType): Promise<JSX.E
         const amountPerCategory = res.meals.length
 
         return (
-            <h1 className="text-sm font-thin text-gray-400 italic">
+            <h1 className="text-sm font-light text-gray-400 italic">
                 {amountPerCategory} meals
             </h1>
         )

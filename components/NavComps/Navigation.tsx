@@ -21,7 +21,7 @@ export default function Navigation() {
   }
 
   return (
-    <div className="navbar bg-green-500 text-gray-100">
+    <div className="navbar bg-orange-500 text-gray-100">
       <div className="navbar-start">
         <a className="px-2 text-white text-xl">Eat-O</a>
       </div>

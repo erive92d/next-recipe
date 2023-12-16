@@ -18,7 +18,7 @@ export default async function Categories() {
     const slicedMeals = meals.slice(0, 6)
 
     return (
-        <div className='text-gray-600  font-bold'>
+        <div className='text-gray-600 font-bold'>
             <div className='flex-wrap hidden lg:flex'>
                 {meals && meals.map((cat, index) => (
                     <div key={index} className="w-2/6  p-2 ">
@@ -33,16 +33,10 @@ export default async function Categories() {
             <div className='flex flex-wrap p-4 lg:hidden '>
                 {slicedMeals && slicedMeals.map((cat, index) => (
                     <div key={index} className="w-2/6  p-2 ">
-                        <div className=' flex flex-col justify-center py-2 items-center bg-white  shadow-lg shadow-gray-300 rounded-lg'>
+                        <div className=' flex flex-col justify-center py-2 items-center bg-black bg-opacity-70 text-white'>
                             <Link href={`/items/${cat.strCategory}`} className="">
                                 <h2 className="">{cat.strCategory}</h2>
-                                {/* <p className='text-xs italic text-gray-400'> */}
-
-                                {/* {mealAmount(cat.strCategory)} meals */}
                                 <MealAmount cat={cat.strCategory} />
-
-                                {/* </p> */}
-                                {/* <Test cat={cat.strCategory} /> */}
                             </Link>
                         </div>
                     </div>

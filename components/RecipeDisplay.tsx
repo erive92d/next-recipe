@@ -12,9 +12,6 @@ interface RecipeDisplayProps {
     recipe: RecipeProps | any //temporary
 }
 
-
-
-
 export default function RecipeDisplay({ recipe }: RecipeDisplayProps) {
 
     const [tab, setTab] = useState<string>("main")
