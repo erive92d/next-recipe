@@ -16,6 +16,17 @@ export const getCategories = async () => {
         throw new Error("Failed to fetch")
     }
 }
+export const getMealCountPerCategory = async (cat: string) => {
+    try {
+        const res = await fetch(`https://www.themealdb.com/api/json/v1/1/list.php?c=list`, { next: { revalidate: 1 } })
+        const data = await res.json()
+        const meals = data.meals.length
+        console.log(meals)
+        return meals
+    } catch (error) {
+        throw new Error("Failed to fetch")
+    }
+}
 
 export const searchByCategory = async (cat: string) => {
     try {
@@ -51,7 +62,7 @@ export const getRecipeByArea = async (area: string) => {
 
 export const getRandomMeal = async () => {
     try {
-        const res = await fetch("https://www.themealdb.com/api/json/v1/1/random.php", { next: { revalidate: 10 } })
+        const res = await fetch("https://www.themealdb.com/api/json/v1/1/random.php", { next: { revalidate: 3600 } })
         const data = await res.json()
         return data.meals[0]
     } catch (error) {

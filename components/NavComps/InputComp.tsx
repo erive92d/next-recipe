@@ -4,10 +4,13 @@ import { getMealByName } from '@/lib/api'
 import { RecipeProps } from '@/lib/props'
 import Link from '@/node_modules/next/link'
 import React, { useEffect, useState } from 'react'
-import { FiSearch } from "react-icons/fi"
-import { useRouter } from '@/node_modules/next/navigation'
+import { IoIosCloseCircleOutline } from "react-icons/io";
 
-export default function InputComp() {
+interface InputProp {
+    handleClick: (e: React.MouseEvent<HTMLButtonElement | HTMLDivElement>) => void
+}
+
+export default function InputComp({ handleClick }: InputProp) {
 
     const [inputText, setInputText] = useState<string>("")
     const [searchResult, setResult] = useState<RecipeProps[] | null>(null)
@@ -19,7 +22,7 @@ export default function InputComp() {
             if (debouncedValue) {
                 const res = await getMealByName(debouncedValue)
                 if (res.meals) {
-                    setResult(res.meals.slice(0, 2))
+                    setResult(res.meals.slice(0, 5))
                 } else {
                     setResult(null)
                     setError("No result")
@@ -40,15 +43,17 @@ export default function InputComp() {
 
 
     return (
-        <div className='py-6 text-gray-800 flex flex-col'>
-            <div className='flex shadow-lg p-4 justify-between bg-white text-lg  items-center rounded-md w-96 mx-auto'>
-                <input value={inputText} onChange={handleChange} type="text" className='w-96 focus:outline-none bg-white' placeholder='search for a recipe..' />
-                <FiSearch />
+        <div className='relative'>
+            <div className="flex">
+                <input onChange={handleChange} type="text" className="input input-sm input-ghost bg-white outline-none focus:outline-none px-2" />
+                <button onClick={handleClick}>
+                    <IoIosCloseCircleOutline />
+                </button>
             </div>
-            <div className='px-2 max-h-40 overflow-y-auto w-full mx-auto'>
+            <div className='absolute z-10 text-sm shadow-lg'>
                 {error && <h1 className='text-gray-500 italic'>{error}</h1>}
                 {searchResult ? searchResult.map((result) => (
-                    <div className='bg-white px-3 border-b' key={result.idMeal}>
+                    <div onClick={handleClick} className='bg-white border-b px-4' key={result.idMeal}>
                         <Link href={`/recipe/${result.idMeal}`} className=" flex gap-2 items-center">
                             <h1>{result.strMeal} </h1>
                             <span className='badge badge-warning badge-sm text-white'> {result.strArea}</span>

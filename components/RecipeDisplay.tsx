@@ -4,8 +4,7 @@ import React, { ReactNode, useState } from 'react'
 import Image from 'next/image'
 import { ItemsProps, RecipeProps } from '@/lib/props'
 import Link from 'next/link'
-import { getRecipeByArea } from '@/lib/api'
-import Suggestions from './Suggestions'
+
 import BackButton from './Actions/BackButton'
 import SaveButton from './Actions/SaveButton'
 

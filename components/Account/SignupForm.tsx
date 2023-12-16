@@ -1,8 +1,6 @@
 "use client"
 import React, { useState } from 'react'
-import { useRef } from 'react'
 import { useRouter } from 'next/navigation'
-import serverUrl from '@/lib/serverUrl'
 interface SignupProps {
     email: string,
     name: string,
