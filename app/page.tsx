@@ -18,7 +18,7 @@ export default async function Home() {
 
       {/* FOR YOU, COMING SOON */}
       <div className='shadow shadow-orange-500'>
-        <h1 className='font-bold bg-orange-500 text-white px-6 py-2 text-2xl'>Today's Recipe</h1>
+        <h1 className='font-bold bg-orange-500 text-white px-6 py-2 text-2xl'>Today Recipe</h1>
         <RandomRecipe />
       </div>
 
