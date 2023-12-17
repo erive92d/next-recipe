@@ -8,6 +8,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
     try {
         await dbConnect()
         const recipes = await Recipe.find({})
+
         if (!recipes) {
             throw new Error("No recipe found")
         }

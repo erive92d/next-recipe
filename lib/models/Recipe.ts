@@ -29,7 +29,13 @@ const recipeSchema = new Schema(
         timestamps: true
     },
 
+
 );
+
+recipeSchema.virtual('AmountOfUsers').get(function () {
+    return recipeSchema.users.length
+});
+
 
 
 const Recipe = models.Recipe || mongoose.model("Recipe", recipeSchema)

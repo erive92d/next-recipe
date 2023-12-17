@@ -17,14 +17,14 @@ export default async function Home() {
       </div>
 
       {/* FOR YOU, COMING SOON */}
-      <div className='shadow shadow-orange-500'>
+      <div className='space-y-2 shadow shadow-orange-500'>
         <h1 className='font-bold bg-orange-500 text-white px-6 py-2 text-2xl'>Today Recipe</h1>
         <RandomRecipe />
       </div>
 
       {/* USERS CHOICE */}
-      <div>
-        <h1 className='text-gray-500 font-2xl font-bold px-2'>Peoples choice</h1>
+      <div className='bg-white space-y-2 py-4'>
+        <h1 className='font-bold bg-orange-500 text-white px-6 py-2 text-2xl'>Top recipes</h1>
         <PeopleChoice />
       </div>
     </div>
