@@ -2,7 +2,6 @@ import MealAmount from '@/helpers/amountMeal'
 import { getCategories } from '@/lib/api'
 import Link from 'next/link'
 import React, { ReactNode } from 'react'
-import ShowAllCategories from './ShowAllCategories'
 import { CatProps } from '@/lib/props'
 
 
@@ -18,7 +17,9 @@ export default async function Categories() {
             <div className='flex text-white  bg-black bg-opacity-70 px-6 py-4 justify-between items-center'>
                 <h1 className='font-bold  text-2xl'>Popular Categories</h1>
                 {/* <button className='btn btn-xs btn-ghost rounded-xl bg-gray-200 font-bold text-orange-500'>Show all</button> */}
-                <ShowAllCategories meals={meals} />
+
+                <Link href="/categories" className='btn btn-xs btn-ghost rounded-xl bg-gray-200 font-bold text-orange-500'>Show all</Link>
+
             </div>
             <div className='flex-wrap hidden lg:flex'>
                 {meals && meals.map((cat, index) => (

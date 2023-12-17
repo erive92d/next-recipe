@@ -19,6 +19,7 @@ export default function Navigation() {
     e.preventDefault()
     setShowInput(!showInput)
   }
+  console.log(showInput)
 
   return (
     <div className="navbar bg-orange-500 text-gray-100">

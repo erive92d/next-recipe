@@ -14,13 +14,11 @@ export default async function RandomRecipe() {
       {/* <h1 className="bg-green-500 p-2 rounded-lg">{recipe.strCategory}</h1> */}
       <div className="flex flex-col gap-4 px-2">
         <h1 className="text-lg text-gray-600">{recipe.strMeal}</h1>
-        <ul className="italic text-sm">
+        <ul className="italic  text-sm">
           <li>{recipe.strArea}</li>
-          <li>{recipe.strCategory}</li>
+          <li>{recipe.strCategory} </li>
           <li>{recipe.strTags}</li>
         </ul>
-
-
         <div className="absolute bottom-0 right-0">
           <button className="btn btn-ghost rounded-none bottom-0 bg-orange-500 btn-sm text-white">
             <Link href={`/recipe/${recipe.idMeal}`} >
