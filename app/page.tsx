@@ -9,10 +9,10 @@ export default async function Home() {
 
       {/* CATEGORIES */}
       <div className=' bg-main-bg shadow shadow-orange-500 space-y-10'>
-        <div className='flex text-white  bg-black bg-opacity-70 px-6 py-4 justify-between items-center'>
+        {/* <div className='flex text-white  bg-black bg-opacity-70 px-6 py-4 justify-between items-center'>
           <h1 className='font-bold  text-2xl'>Popular Categories</h1>
           <a className='btn btn-xs btn-ghost rounded-xl bg-gray-200 font-bold text-orange-500'>Show all</a>
-        </div>
+        </div> */}
         <Categories />
       </div>
 
