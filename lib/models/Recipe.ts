@@ -33,7 +33,7 @@ const recipeSchema = new Schema(
 );
 
 recipeSchema.virtual('AmountOfUsers').get(function () {
-    return recipeSchema.users.length
+    return this.users.length
 });
 
 
