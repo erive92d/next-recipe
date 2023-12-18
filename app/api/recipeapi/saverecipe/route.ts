@@ -22,7 +22,6 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
             return NextResponse.json(createRecipe, { status: 200 })
         }
         recipe.users.addToSet(user)
-
         await recipe.save()
 
         return NextResponse.json(recipe, { status: 200 })

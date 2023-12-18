@@ -16,7 +16,7 @@ export default async function Profile() {
         <div className="flex flex-col">
             <div className="flex justify-between bg-white p-2">
                 <BackButton />
-                <h1 className="btn btn-primary btn-sm">Profile</h1>
+                <h1 className="">Profile</h1>
             </div>
             <div>
                 <h1>{session.user.name}</h1>

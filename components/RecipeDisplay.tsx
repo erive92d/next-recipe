@@ -34,9 +34,14 @@ export default function RecipeDisplay({ recipe }: RecipeDisplayProps) {
                             <SaveButton recipe={recipe} />
                         </div>
                         <p className='text-lg font-semibold'>{recipe.strArea}</p>
-                        <Link className='link text-right' href={recipe.strSource} target='_black'>
-                            Source
+                        {recipe.strSource ? 
+                          <Link className='link text-right' href={recipe.strSource} target='_black'>
+                          Source
                         </Link>
+                      :
+                      null
+                    }
+                      
                     </div>
                 </div>
 

@@ -17,21 +17,24 @@ export default async function Categories() {
         <div className='text-gray-600 font-bold '>
             <div className='flex text-white  bg-black bg-opacity-70 px-6 py-4 justify-between items-center'>
                 <h1 className='font-bold  text-2xl'>Popular Categories</h1>
-                <Link href="/categories" className='btn btn-xs btn-ghost rounded-xl bg-gray-200 font-bold text-orange-500'>Show all</Link>
+                <Link href="/categories" className='btn lg:hidden btn-xs btn-ghost rounded-xl bg-gray-200 font-bold text-orange-500'>Show all</Link>
             </div>
+            {/* LARGE */}
             <div className='flex-wrap hidden lg:flex'>
                 {meals && meals.map((cat, index) => (
-                    <div key={index} className="w-2/6  p-2 ">
-                        <div className=' flex flex-col justify-center items-center bg-green-500 text-white  rounded-sm'>
-                            <Link href={`/items/${cat.strCategory}`} className="">
+                     <div key={index} className="w-2/6  p-2 ">
+                        <div className=' flex flex-col justify-center py-2 items-center bg-gray-200 bg-opacity-80 rounded '>
+                            <Link href={`/items/${cat.strCategory}`} className="flex flex-col items-center text-gray-800">
+                                <span className='text-3xl text-orange-500'><CategoryLogo categoryName={cat.strCategory}/></span>
                                 <h2 className="">{cat.strCategory}</h2>
+                                <MealAmount cat={cat.strCategory} />
                             </Link>
                         </div>
-                    </div>
+                 </div>
                 ))}
             </div>
+            {/* MOBILE */}
             <div className='flex flex-wrap p-4 lg:hidden '>
-
                 {slicedMeals && slicedMeals.map((cat, index) => (
                     <div key={index} className="w-2/6  p-2 ">
                         <div className=' flex flex-col justify-center py-2 items-center bg-gray-200 bg-opacity-80 rounded '>
@@ -46,24 +49,6 @@ export default async function Categories() {
 
             </div>
 
-        </div>
-    )
-}
-
-function ModalCategories() {
-    return (
-        <div>
-            <a href="#my_modal_8" className="">...</a>
-
-            <div className="modal" role="dialog" id="my_modal_8">
-                <div className="modal-box text-black">
-                    <h3 className=" text-lg">Hello!</h3>
-                    <p className="py-4">More categories coming soon...</p>
-                    <div className="modal-action">
-                        <a href="#" className="btn">Yay!</a>
-                    </div>
-                </div>
-            </div>
         </div>
     )
 }
