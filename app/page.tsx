@@ -5,7 +5,7 @@ import RandomRecipe from '@/components/mainComps/RandomRecipe'
 export default async function Home() {
 
   return (
-    <div className=' min-h-screen flex flex-col space-y-6 lg:flex-row'>
+    <div className=' min-h-screen flex flex-col space-y-10 lg:flex-row'>
 
       {/* CATEGORIES */}
       <div className=' bg-main-bg shadow shadow-orange-500 space-y-10'>
@@ -17,7 +17,7 @@ export default async function Home() {
       </div>
 
       {/* FOR YOU, COMING SOON */}
-      <div className='space-y-2 shadow shadow-orange-500'>
+      <div className='space-y-2 shadow'>
         <h1 className='font-bold bg-orange-500 text-white px-6 py-2 text-2xl'>Today Recipe</h1>
         <RandomRecipe />
       </div>
