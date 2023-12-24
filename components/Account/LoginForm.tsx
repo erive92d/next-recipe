@@ -27,7 +27,6 @@ export default function LoginForm() {
 
     const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault()
-
         const response = await signIn("credentials", {
             email: userInput.email,
             password: userInput.password,
@@ -40,7 +39,7 @@ export default function LoginForm() {
         }
 
         if (response?.status === 200) {
-
+            router.refresh()
             router.back()
         }
     }

@@ -36,9 +36,9 @@ export default async function page({ params: { category } }: ParamProps) {
 
     return (
         <div className=''>
-            <div className='flex justify-between items-center p-2 bg-green-600 text-white'>
+            <div className='flex shadow items-center p-2 '>
                 <BackButton />
-                <h1 className='text-right text-2xl font-bold'>{category}</h1>
+                <h1 className='text-right text-2xl  italic'>{category}</h1>
             </div>
             <div className='flex flex-wrap lg:p-6 '>
                 {data.meals.map((rec) => (

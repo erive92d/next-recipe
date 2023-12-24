@@ -32,10 +32,6 @@ const recipeSchema = new Schema(
 
 );
 
-recipeSchema.virtual('AmountOfUsers').get(function () {
-    return this.users.length
-});
-
 
 
 const Recipe = models.Recipe || mongoose.model("Recipe", recipeSchema)

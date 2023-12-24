@@ -1,4 +1,5 @@
 
+import Recipe from "@/lib/models/Recipe";
 import serverUrl from "@/lib/serverUrl";
 import NextAuth, { AuthOptions } from "next-auth";
 import CredentialsProvider from 'next-auth/providers/credentials';
@@ -55,8 +56,10 @@ export const authOptions: AuthOptions = {
       return { ...token, ...user };
     },
     session: async ({ session, token }) => {
+      const userId = token._id
       session.user = token;
-
+      const recipes = await Recipe.find({ users: userId })
+      session.recipes = recipes
       return session;
     },
   },

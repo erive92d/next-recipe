@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Navigation from '@/components/NavComps/Navigation'
 import NextAuthProvider from '@/Provider'
+import ServerNav from '@/components/NavComps/ServerNav'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -23,7 +24,7 @@ export default async function RootLayout({
         <NextAuthProvider>
           <div className='lg:w-3/4 lg:mx-auto lg:border relative'>
             <header>
-              <Navigation />
+              <ServerNav />
             </header>
             {children}
           </div>
