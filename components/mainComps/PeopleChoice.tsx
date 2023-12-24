@@ -14,15 +14,18 @@ export default async function PeopleChoice() {
     const slicedSave = sortedSaves.slice(0, 5)
     return (
         <div>
-            <div className="carousel carousel-center max-w-md px-2 space-x-2 ">
+            <div className="carousel carousel-center max-w-md lg:max-w-full px-2 space-x-2 ">
                 {/* <div className="carousel-item">
                     <img src="https://daisyui.com/images/stock/photo-1559703248-dcaaec9fab78.jpg" className="rounded-box" />
                 </div> */}
                 {/* <div className="carousel-item"> */}
-                {slicedSave ? slicedSave.map((res) => (
+                {slicedSave ? slicedSave.map((res, index) => (
                     <div key={res.id} className="relative carousel-item flex flex-col items-center text-gray-700 ">
                         <Image className="" src={`${res.image}/preview`} unoptimized height={200} width={200} alt="recipeThumb" />
-                        <h1 className="font-bold ">{res.name}</h1>
+                        <h1 className="font-bold ">
+                            <span className="mx-2">{index + 1}</span>
+                            {res.name}
+                        </h1>
                         <p className="badge absolute right-0 badge-warning rounded-none">{res.users.length} Saves</p>
                     </div>
                 ))

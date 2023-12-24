@@ -21,16 +21,16 @@ export default function Navigation() {
   }
 
   return (
-    <div className="navbar bg-orange-500 text-gray-100">
+    <div className="navbar bg-orange-500 text-lg lg:p-10 lg:text-xl text-gray-100">
       <div className="navbar-start">
-        <a className="px-2 text-white text-xl">Eat-O</a>
+        <a className="px-2 text-white ">Eat-O</a>
       </div>
-      <div className="navbar-center hidden lg:flex">
+      {/* <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li><a>Item 1</a></li>
           <li><a>Item 3</a></li>
         </ul>
-      </div>
+      </div> */}
       <div className="navbar-end gap-4">
         {showInput ?
           <div className='bg-white flex justify-between rounded px-2 items-center text-gray-700'>
@@ -48,12 +48,12 @@ export default function Navigation() {
             {session.data ?
               <>
                 <div className="dropdown dropdown-left">
-                  <div tabIndex={0} role="button" className=" lg:hidden">
+                  <div tabIndex={0} role="button" className=" ">
                     <h1>Hello {session?.data?.user?.name}</h1>
                   </div>
                   <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white rounded-box w-52">
                     <li>
-                      <button onClick={() => router.push("/profile")} className='btn btn-ghost btn-sm'>Profile</button>
+                      <button onClick={() => router.push("/profile")} className='text-black btn btn-sm btn-info'>Profile</button>
                     </li>
                     <li>
                       <SignoutBtn />

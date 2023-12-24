@@ -43,7 +43,7 @@ export default function InputComp({ handleClick }: InputProp) {
 
 
     return (
-        <div className='relative'>
+        <div className='relative '>
             <div className="flex">
                 <input onChange={handleChange} type="text" className="input input-sm input-ghost bg-white outline-none focus:outline-none px-2" />
                 <button onClick={handleClick}>

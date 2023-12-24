@@ -5,7 +5,7 @@ import { CatProps } from "@/lib/props"
 import Link from "@/node_modules/next/link"
 import { useState } from "react"
 
-export default function ShowAllCategories({ meals }: CatProps) {
+export default function ShowAllCategories() {
     return (
         <button className='btn btn-xs btn-ghost rounded-xl bg-gray-200 font-bold text-orange-500'>Show all</button>
     )
