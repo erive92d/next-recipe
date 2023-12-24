@@ -26,7 +26,7 @@ if (!cached) {
 
 
 
-const dbConnect: Connection = async () => {
+const dbConnect = async () => {
   const local_uri = "mongodb://localhost:27017/recipe-db"
   const production_uri = process.env.MONGODB_URL
 
