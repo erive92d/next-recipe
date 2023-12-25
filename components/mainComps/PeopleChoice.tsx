@@ -1,5 +1,7 @@
 import grabSaves from "@/controllers/grabSaves"
 import Image from "@/node_modules/next/image"
+import { MdOutlineFavorite } from "react-icons/md";
+
 type PeopleChoiceType = {
     id: string,
     name: string,
@@ -23,10 +25,9 @@ export default async function PeopleChoice() {
                     <div key={res.id} className="relative carousel-item flex flex-col items-center text-gray-700 ">
                         <Image className="" src={`${res.image}/preview`} unoptimized height={200} width={200} alt="recipeThumb" />
                         <h1 className="font-bold ">
-                            <span className="mx-2">{index + 1}</span>
                             {res.name}
                         </h1>
-                        <p className="badge absolute right-0 badge-warning rounded-none">{res.users.length} Saves</p>
+                        <p className="badge absolute right-0 badge-warning text-white rounded-none">{res.users.length} <MdOutlineFavorite/></p>
                     </div>
                 ))
                     :

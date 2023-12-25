@@ -21,7 +21,7 @@ export default async function Home() {
 
       {/* USERS CHOICE */}
       <div className='bg-white space-y-2 py-4'>
-        <h1 className='font-bold bg-orange-500 text-white px-6 py-2 text-2xl'>Top 5 recipes</h1>
+        <h1 className='font-bold bg-orange-500 text-white px-6 py-2 text-2xl'>Top recipes</h1>
         <PeopleChoice />
       </div>
     </div>
