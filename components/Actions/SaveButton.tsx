@@ -74,7 +74,9 @@ export default function SaveButton({ recipe }: SaveType) {
     })
 
     if (response.ok) {
+      router.refresh()
       alert("Recipe has been saved")
+
     }
 
   }

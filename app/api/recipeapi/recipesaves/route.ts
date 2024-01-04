@@ -5,10 +5,11 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(req: NextRequest, res: NextResponse) {
+    // const response = req.nextUrl.searchParams.get("userId")
+    // console.log(response,"@@@")
     try {
         await dbConnect()
         const recipes = await Recipe.find({})
-
         if (!recipes) {
             throw new Error("No recipe found")
         }

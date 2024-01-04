@@ -1,5 +1,6 @@
 import grabSaves from "@/controllers/grabSaves"
 import Image from "@/node_modules/next/image"
+import Link from "next/link";
 import { MdOutlineFavorite } from "react-icons/md";
 
 type PeopleChoiceType = {
@@ -12,6 +13,7 @@ type PeopleChoiceType = {
 
 export default async function PeopleChoice() {
     const save: PeopleChoiceType[] = await grabSaves()
+    console.log(save)
     const sortedSaves = save.sort((a, b) => (b.users.length - a.users.length))
     const slicedSave = sortedSaves.slice(0, 5)
     return (
@@ -22,13 +24,13 @@ export default async function PeopleChoice() {
                 </div> */}
                 {/* <div className="carousel-item"> */}
                 {slicedSave ? slicedSave.map((res, index) => (
-                    <div key={res.id} className="relative carousel-item flex flex-col items-center text-gray-700 ">
+                    <Link href={`/recipe/${res.id}`}key={res.id} className="relative carousel-item flex flex-col items-center text-gray-700 ">
                         <Image className="" src={`${res.image}/preview`} unoptimized height={200} width={200} alt="recipeThumb" />
                         <h1 className="font-bold ">
                             {res.name}
                         </h1>
                         <p className="badge absolute right-0 badge-warning text-white rounded-none">{res.users.length} <MdOutlineFavorite/></p>
-                    </div>
+                    </Link>
                 ))
                     :
                     <h1>Loading</h1>

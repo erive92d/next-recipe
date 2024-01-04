@@ -1,5 +1,5 @@
 
-import Basket from "@/lib/models/Basket";
+import Recipe from "@/lib/models/Recipe";
 import serverUrl from "@/lib/serverUrl";
 import NextAuth, { AuthOptions } from "next-auth";
 import CredentialsProvider from 'next-auth/providers/credentials';
@@ -56,10 +56,7 @@ export const authOptions: AuthOptions = {
       return { ...token, ...user };
     },
     session: async ({ session, token }) => {
-
       session.user = token;
-      const userBasket = await Basket.find({user: token._id}).populate("recipes")
-      session.basket = userBasket[0]
       return session;
     },
   },

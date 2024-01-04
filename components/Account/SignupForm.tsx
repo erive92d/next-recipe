@@ -1,6 +1,8 @@
 "use client"
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { signIn } from 'next-auth/react'
+
 interface SignupProps {
     email: string,
     name: string,
@@ -52,7 +54,22 @@ export default function SignupForm() {
         }
 
         if (response.ok) {
-            router.push("/")
+            const loginUser = await signIn("credentials", {
+                email: inputData.email,
+                password: inputData.password,
+                redirect: false,
+            })
+
+            if (!loginUser?.ok) {
+                setError("Unable to login")
+            }
+
+            if (loginUser?.status === 200) {
+                router.refresh()
+                router.back()
+            }
+
+
         }
     }
 
