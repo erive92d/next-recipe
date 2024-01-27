@@ -44,7 +44,7 @@ export const authOptions: AuthOptions = {
 
   secret: process.env.NEXTAUTH_SECRET,
   pages: {
-    signIn: "/auth/login"
+    signIn: "/login"
   },
 
   session: {
@@ -56,10 +56,7 @@ export const authOptions: AuthOptions = {
       return { ...token, ...user };
     },
     session: async ({ session, token }) => {
-      const userId = token._id
       session.user = token;
-      const recipes = await Recipe.find({ users: userId })
-      session.recipes = recipes
       return session;
     },
   },

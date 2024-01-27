@@ -2,8 +2,10 @@ import BackButton from "@/components/Actions/BackButton"
 import ProfileComp from "@/components/ProfileComp"
 import { redirect } from "@/node_modules/next/navigation"
 import { getServerSession } from 'next-auth'
-import { authOptions } from "../api/auth/[...nextauth]/route"
+import { authOptions } from "../../api/auth/[...nextauth]/route"
 import Image from "@/node_modules/next/image"
+import grabSaves from "@/controllers/grabSaves"
+import getUserData from "@/controllers/getUserData"
 
 export default async function Profile() {
 
@@ -13,7 +15,8 @@ export default async function Profile() {
         redirect("/auth/login")
     }
 
-    console.log(session, "sss")
+    const recipeSaved = await getUserData()
+    console.log(recipeSaved, "response")
 
     return (
         <div className="flex flex-col">
@@ -25,15 +28,15 @@ export default async function Profile() {
                 <h1 className="text-center text-2xl">Hello {session?.user?.name}</h1>
                 {/* <ProfileComp /> */}
                 <div>
-                    Recipes saved
-                    <ul className=" divide-y-2 ">
-                        {session?.recipes?.map((recip, index) => (
-                            <li className="py-2 flex gap-2" key={index}>
-                                <Image src={`${recip.image}/preview`} unoptimized height={100} width={100} alt="recipe pic" />
-                                <h1>{recip.name}</h1>
-                            </li>
-                        ))}
-                    </ul>
+                    {recipeSaved &&
+                        <div>
+                            {recipeSaved.map((recip, index) => (
+                                <div key={index}>
+                                    <h1>{recip.name}</h1>
+                                </div>
+                            ))}
+                        </div>
+                    }
                 </div>
             </div>
         </div>

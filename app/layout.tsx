@@ -1,9 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import Navigation from '@/components/NavComps/Navigation'
 import NextAuthProvider from '@/Provider'
-import ServerNav from '@/components/NavComps/ServerNav'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -23,9 +21,6 @@ export default async function RootLayout({
       <body className="bg-white min-h-screen">
         <NextAuthProvider>
           <div className='lg:w-3/4 lg:mx-auto lg:border relative'>
-            <header>
-              <ServerNav />
-            </header>
             {children}
           </div>
         </NextAuthProvider>

@@ -3,15 +3,22 @@ import Recipe from '@/lib/models/Recipe'
 import User from '@/lib/models/User'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { NextRequest, NextResponse } from 'next/server'
+import getServerSession from "next-auth"
+import { authOptions } from '../auth/[...nextauth]/route'
+import { headers } from "next/headers";
+import { getToken } from "next-auth/jwt"
 
 export async function GET(req: NextRequest, res: NextResponse) {
-
+    // console.log(req, "request")
+    // const session = await getServerSession(authOptions)
+    // console.log(session, "@@@@@@@")
+    const token = await getToken({ req })
+    const userId = token._id
     try {
         await dbConnect()
-        const recipes = await Recipe.find({})
-
+        const recipes = await Recipe.find({ users: userId })
         if (!recipes) {
-            throw new Error("No recipe found")
+            console.log("no recipe")
         }
         return new NextResponse(JSON.stringify(recipes), { status: 200 })
     } catch (error) {

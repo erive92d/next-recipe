@@ -1,7 +1,7 @@
 import { getServerSession } from 'next-auth'
 import { redirect } from 'next/navigation'
 import React from 'react'
-import { authOptions } from '../api/auth/[...nextauth]/route'
+import { authOptions } from '../../api/auth/[...nextauth]/route'
 import SignoutBtn from '@/components/Actions/SignoutBtn'
 
 export default async function page() {

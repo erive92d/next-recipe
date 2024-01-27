@@ -22,9 +22,9 @@ export default async function page() {
                             <span className="text-3xl text-orange-600">
                                 <CategoryLogo categoryName={cat.strCategory} />
                             </span>
-                             <p> {cat.strCategory}</p>  
+                            <p> {cat.strCategory}</p>
                             <MealAmount cat={cat.strCategory} />
-                        </Link> 
+                        </Link>
                     </li>
                 ))}
             </ul>

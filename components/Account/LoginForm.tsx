@@ -11,6 +11,7 @@ export default function LoginForm() {
         password: ""
     })
 
+
     const [error, setError] = useState<boolean>(false)
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,21 +46,24 @@ export default function LoginForm() {
     }
 
     return (
-        <div className='h-screen flex flex-col justify-center items-center gap-4'>
-            <div className=''>Login</div>
-            <div className='flex flex-col gap-2'>
-                <input onChange={handleChange} type="email" name="email" className='input bg-white' placeholder='email...' />
-                <input onChange={handleChange} type="password" name="password" className='input bg-white' placeholder='password..' />
-            </div>
-            <div className='flex  gap-2'>
-                <button onClick={handleSubmit} className='btn btn-sm btn-success'>Log In</button>
-                <button className='btn btn-sm btn-info'>
-                    <Link href="/auth/signup">
-                        Sign Up
-                    </Link>
-                </button>
+        <div className='h-screen flex flex-col '>
+            <div className='p-4 border flex flex-col gap-4'>
+                <div className=' text-2xl font-bold text-orange-500'>Login</div>
+                <div className='flex flex-col gap-2'>
+                    <input onChange={handleChange} type="email" name="email" className='input input-bordered bg-white' placeholder='email...' />
+                    <input onChange={handleChange} type="password" name="password" className='input  input-bordered bg-white' placeholder='password..' />
+                </div>
+                <div className='flex gap-2'>
+                    <button onClick={handleSubmit} className='btn btn-sm btn-success'>Log In</button>
+                    <button className='btn btn-sm btn-info'>
+                        <Link href="/signup">
+                            Sign Up
+                        </Link>
+                    </button>
 
+                </div>
             </div>
+
             {error && <h1 className='btn btn-error'>Invalid Credentials</h1>}
         </div>
     )
