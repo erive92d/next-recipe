@@ -9,10 +9,9 @@ export default async function UserHero() {
     const session = await getServerSession(authOptions)
 
     if (session?.status === "loading") return <h1>Loading...</h1>
-    console.log(session, "session from server")
 
     return (
-        <div>
+        <div className="">
             {session?.user ?
                 <>
                     <div className="dropdown dropdown-left">
