@@ -1,5 +1,7 @@
 "use client"
-
+import { use } from "react"
+import grabSaves from '@/controllers/grabSaves'
+import testing from '@/controllers/testing'
 import { RecipeProps } from '@/lib/props'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
@@ -7,6 +9,12 @@ import React, { useState } from 'react'
 
 type SaveType = {
   recipe: RecipeProps
+}
+
+
+const getPosts = async () => {
+  const saves = await grabSaves()
+  return saves
 }
 
 export default function SaveButton({ recipe }: SaveType) {
@@ -53,6 +61,9 @@ export default function SaveButton({ recipe }: SaveType) {
     }
 
   }
+
+  const data = use(getPosts())
+  console.log(data, "here")
 
   return (
     <button onClick={handleSave} className='btn btn-sm text-white btn-success'>save</button>

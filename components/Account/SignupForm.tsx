@@ -76,13 +76,15 @@ export default function SignupForm() {
 
     return (
         <div>
-            <h1 className='text-2xl bold text-orange-400 text-center m-4'>Register</h1>
-            <div className='flex flex-col gap-2 items-center'>
-                <input value={inputData.email} name="email" type="email" onChange={handleChange} className='input bg-white' placeholder='email...' />
-                <input value={inputData.name} name="name" type="name" onChange={handleChange} className='input bg-white' placeholder='name...' />
-                <input value={inputData.password} name="password" type="password" onChange={handleChange} className='input bg-white' placeholder='password...' />
-                <input value={inputData.validatePass} name="validatePass" type="password" onChange={handleChange} className='input bg-white' placeholder='validate password..' />
-                <button onClick={handleSubmit} className='btn btn-sm btn-success'>Register</button>
+            <h1 className='text-2xl bold text-orange-400 text-center m-4'>New Account</h1>
+            <div className='flex flex-col gap-2 p-2'>
+                <input value={inputData.email} name="email" type="email" onChange={handleChange} className='input input-ghost input-bordered bg-white' placeholder='email...' />
+                <input value={inputData.name} name="name" type="name" onChange={handleChange} className='input input-ghost input-bordered bg-white' placeholder='name...' />
+                <input value={inputData.password} name="password" type="password" onChange={handleChange} className='input input-ghost input-bordered bg-white' placeholder='password...' />
+                <input value={inputData.validatePass} name="validatePass" type="password" onChange={handleChange} className='input input-ghost input-bordered bg-white' placeholder='validate password..' />
+                <div className='mx-auto'>
+                    <button onClick={handleSubmit} className='btn btn-sm btn-success text-white'>Submit</button>
+                </div>
                 {error && <h1 className=' btn btn-sm btn-error'>{error}</h1>}
             </div>
         </div>
