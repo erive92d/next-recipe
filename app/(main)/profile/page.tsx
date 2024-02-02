@@ -27,7 +27,7 @@ export default async function Profile() {
             <div className="flex flex-col ">
                 <h1 className="text-center text-2xl">Hello {session?.user?.name}</h1>
                 {/* <ProfileComp /> */}
-                <div>
+                {/* <div>
                     {recipeSaved &&
                         <div>
                             {recipeSaved.map((recip, index) => (
@@ -37,7 +37,7 @@ export default async function Profile() {
                             ))}
                         </div>
                     }
-                </div>
+                </div> */}
             </div>
         </div>
     )
