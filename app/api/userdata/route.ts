@@ -13,7 +13,8 @@ export async function GET(req: NextRequest, res: NextResponse) {
     // const session = await getServerSession(authOptions)
     // console.log(session, "@@@@@@@")
     const token = await getToken({ req })
-    const userId = token._id
+
+    const userId = token ? token._id : null
     try {
         await dbConnect()
         const recipes = await Recipe.find({ users: userId })
