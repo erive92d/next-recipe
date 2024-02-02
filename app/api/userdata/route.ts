@@ -10,16 +10,19 @@ import { authOptions } from '../auth/[...nextauth]/route'
 export async function GET(req: NextRequest, res: NextResponse) {
 
     const session = await getServerSession(authOptions)
-    if(!session?.user) {
+
+    console.log(session, "session asdasdasd")
+    if (!session?.user) {
         return new NextResponse("Need to be logged in", { status: 401 })
     }
-    const userId = session.user._id
 
+
+    const userId = session.user._id
     try {
         await dbConnect()
         // const recipes = await Recipe.findOne({})
-        const recipes = await Recipe.find({users:userId})
-        
+        const recipes = await Recipe.find({ users: userId })
+        console.log(recipes, "@@")
         if (!recipes) {
             console.log("no recipe")
         }
