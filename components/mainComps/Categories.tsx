@@ -20,7 +20,7 @@ export default async function Categories() {
                 <Link href="/categories" className='btn lg:hidden btn-xs btn-ghost rounded-xl bg-gray-200 font-bold text-orange-500'>Show all</Link>
             </div>
             {/* LARGE */}
-            <div className='flex-wrap hidden lg:flex'>
+            <div className='hidden lg:p-8 lg:flex'>
                 {meals && meals.map((cat, index) => (
                      <div key={index} className="w-2/6  p-2 ">
                         <div className=' flex flex-col justify-center py-2 items-center bg-gray-200 bg-opacity-80 rounded '>
