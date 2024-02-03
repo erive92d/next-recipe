@@ -66,3 +66,11 @@ export interface CatProps {
     strCategory: string
   }[]
 }
+
+export interface RecipeFromDB {
+  _id: string 
+  id: string
+  name: string
+  image: string
+  users: string[]
+}
