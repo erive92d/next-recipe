@@ -7,19 +7,19 @@ import { redirect } from 'next/navigation'
 import { NextRequest, NextResponse } from 'next/server'
 import { authOptions } from '../auth/[...nextauth]/route'
 
-export interface DefaultUser {
+interface User {
     user: {
-        name?: string | null
-        email?: string | null
-        image?: string | null
-        _id?: string | null   
+        _id: string;
+        name?: string | null | undefined;
+        email?: string | null | undefined;
+        image?: string | null | undefined;
     }
-  
-  }
+   
+}
 
 export async function GET(req: NextRequest, res: NextResponse) {
 
-    const session:DefaultUser | null = await getServerSession(authOptions)
+    const session:User | null = await getServerSession(authOptions)
 
     if(!session?.user) {
         return new NextResponse("Need to be logged in", { status: 401 })
@@ -32,8 +32,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
         await dbConnect()
         // const recipes = await Recipe.findOne({})
         const recipes = await Recipe.find({users:userId})
-        console.log(recipes)
-        
+
         if (!recipes) {
             console.log("no recipe")
         }
