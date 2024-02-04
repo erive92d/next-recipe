@@ -1,4 +1,5 @@
-import { Connection, connect } from 'mongoose';
+import type { Connection } from 'mongoose';
+import { connect } from "mongoose"
 
 let cachedDb: Connection | null = null;
 
@@ -7,10 +8,7 @@ export default async function dbConnect(): Promise<Connection> {
     return cachedDb;
   }
 
-  const db: Connection = await connect(process.env.MONGODB_URL as string, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
+  const db: Connection | any = await connect(process.env.MONGODB_URL as string);
 
   cachedDb = db;
   return db;
