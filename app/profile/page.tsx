@@ -15,6 +15,8 @@ import { ItemsProps, RecipeFromDB, RecipeProps } from "@/lib/props"
 export default async function Profile() {
    const data:RecipeFromDB[] = await grabUserData()
 
+   if(!data) return <h1>Loading user data..</h1>
+
     return (
         <div className="flex flex-col">
             <div className="flex justify-between bg-white p-2">
