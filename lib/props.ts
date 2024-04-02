@@ -66,3 +66,11 @@ export interface CatProps {
     strCategory: string
   }[]
 }
+
+export type PeopleChoiceType = {
+  id: string,
+  name: string,
+  image: string,
+  users: string[],
+
+}
