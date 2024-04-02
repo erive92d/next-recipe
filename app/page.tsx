@@ -5,9 +5,11 @@ import RandomRecipe from '@/components/mainComps/RandomRecipe'
 export default async function Home() {
 
   return (
+
     <div className='lg:w-4/5 mx-auto py-10'>
       {/* <RandomRecipe /> */}
       <PeopleChoice />
+
     </div>
   )
 }

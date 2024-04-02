@@ -9,13 +9,16 @@ import mongoose from "mongoose"
 import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, PromiseLikeOfReactNode, Key } from "react"
 import dbConnect from "@/lib/db"
 import grabUserData from "@/controllers/grabUserData"
+import { ItemsProps, RecipeFromDB, RecipeProps } from "@/lib/props"
 
 
 export default async function Profile() {
 
+
     const data = await grabUserData()
     console.log(data)
     if (!data) return <h1>Loading...</h1>
+
 
     return (
         <div className="flex flex-col">

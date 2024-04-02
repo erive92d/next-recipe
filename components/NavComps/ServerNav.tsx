@@ -4,7 +4,7 @@ import InputController from "./InputController";
 export default function ServerNav() {
 
     return (
-        <div className="border-b border-gray-200 px-8 py-12 text-xl flex justify-between  text-black">
+       <div className="border-b border-gray-200 px-8 py-12 text-xl flex justify-between  text-black">
             <div>
                 <InputController />
             </div>

@@ -7,7 +7,18 @@ import { redirect } from 'next/navigation'
 import { NextRequest, NextResponse } from 'next/server'
 import { authOptions } from '../auth/[...nextauth]/route'
 
+interface User {
+    user: {
+        _id: string;
+        name?: string | null | undefined;
+        email?: string | null | undefined;
+        image?: string | null | undefined;
+    }
+   
+}
+
 export async function GET(req: NextRequest, res: NextResponse) {
+
 
     const session = await getServerSession(authOptions)
 
@@ -17,12 +28,14 @@ export async function GET(req: NextRequest, res: NextResponse) {
     }
 
 
+
     const userId = session.user._id
     try {
         await dbConnect()
         // const recipes = await Recipe.findOne({})
         const recipes = await Recipe.find({ users: userId })
         console.log(recipes, "@@")
+
         if (!recipes) {
             console.log("no recipe")
         }

@@ -52,11 +52,11 @@ export const authOptions: AuthOptions = {
   },
   callbacks: {
     jwt: async ({ token, user }) => {
-
       return { ...token, ...user };
     },
     session: async ({ session, token }) => {
       session.user = token;
+ 
       return session;
     },
   },
