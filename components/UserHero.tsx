@@ -7,7 +7,9 @@ import SignoutBtn from "./Actions/SignoutBtn";
 
 export default async function UserHero() {
     const session = await getServerSession(authOptions)
-    if (!session) return <h1>Loading...</h1>
+
+    if (session?.status === "loading") return <h1>Loading...</h1>
+
 
     return (
         <div className="">

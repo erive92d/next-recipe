@@ -19,19 +19,22 @@ interface User {
 
 export async function GET(req: NextRequest, res: NextResponse) {
 
-    const session:User | null = await getServerSession(authOptions)
 
-    if(!session?.user) {
+    const session = await getServerSession(authOptions)
+
+    console.log(session, "session asdasdasd")
+    if (!session?.user) {
         return new NextResponse("Need to be logged in", { status: 401 })
     }
 
 
-    const userId = session.user._id
 
+    const userId = session.user._id
     try {
         await dbConnect()
         // const recipes = await Recipe.findOne({})
-        const recipes = await Recipe.find({users:userId})
+        const recipes = await Recipe.find({ users: userId })
+        console.log(recipes, "@@")
 
         if (!recipes) {
             console.log("no recipe")

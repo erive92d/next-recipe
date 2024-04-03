@@ -4,6 +4,7 @@ import { NextRequest, NextResponse } from "@/node_modules/next/server"
 
 export const POST = async (req: NextRequest, res: NextResponse) => {
     const { id, name, image, user } = await req.json()
+
     try {
         await dbConnect()
 
