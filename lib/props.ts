@@ -67,6 +67,14 @@ export interface CatProps {
   }[]
 }
 
+
+export type PeopleChoiceType = {
+  id: string,
+  name: string,
+  image: string,
+  users: string[],
+
+
 export interface RecipeFromDB {
   _id: string 
   id: string

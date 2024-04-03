@@ -9,24 +9,24 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
     try {
         await dbConnect()
         //check if recipe exists
-        const recipe = await Recipe.findOne({id:id})
+        const recipe = await Recipe.findOne({ id: id })
 
-        if(!recipe) {
-                const recipe = new Recipe(
-                    {
-                        id, name, image
-                    }
-                )
-                recipe.save()
+        if (!recipe) {
+            const recipe = new Recipe(
+                {
+                    id, name, image
+                }
+            )
+            recipe.save()
         }
 
         const basket = await Basket.findOneAndUpdate(
-            {user:user.id},
-            {$addToSet: {recipes: recipe._id}},
-            {upsert:true}
-            )
+            { user: user.id },
+            { $addToSet: { recipes: recipe._id } },
+            { upsert: true }
+        )
 
-        if(!basket) {
+        if (!basket) {
             const createBasket = await Basket.create(
                 {
                     user: user.id
@@ -34,8 +34,9 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
             )
             console.log(createBasket, "@@basket from database")
             return NextResponse.json(createBasket, { status: 200 })
-            
+
         }
+        console.log(basket, "basket")
 
         basket.save()
 

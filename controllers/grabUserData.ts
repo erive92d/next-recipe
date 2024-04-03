@@ -5,13 +5,13 @@ import { headers } from 'next/headers'
 
 export default async function grabUserData() {
 
-
     try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/userdata`, {
-            cache:"no-store",
+        const response = await fetch(`${process.env.NEXTAUTH_URL}/api/userdata`, {
+            cache: "no-store",
             headers: headers()
         })
-            if(!response.ok) {
+
+        if (!response.ok) {
             throw new Error("error")
         }
 

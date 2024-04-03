@@ -39,7 +39,7 @@ export default function SignupForm() {
             return
         }
 
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/account/signup`, {
+        const response = await fetch(`${process.env.NODE_ENV === "production" ? process.env.NEXT_PUBLIC_API_URL : ""}/api/account/signup`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -47,6 +47,8 @@ export default function SignupForm() {
             body: JSON.stringify(inputData),
             cache: "no-cache"
         })
+
+        console.log(response, "response")
 
         if (response.status === 301) {
             setError(response.statusText)
