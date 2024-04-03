@@ -9,11 +9,11 @@ export default async function RandomRecipe() {
   const recipe: RecipeProps = await getRandomMeal()
 
   return (
-    <div className="bg-white relative w-96 lg:w-full mx-auto flex gap-2">
+    <div className=" relative w-96 lg:w-full mx-auto flex gap-2">
       <Image className="rounded-lg lg:w-96" src={`${recipe.strMealThumb}/preview`} unoptimized height={200} width={200} alt="recipeThumb" />
       {/* <h1 className="bg-green-500 p-2 rounded-lg">{recipe.strCategory}</h1> */}
       <div className="flex flex-col gap-4 px-2">
-        <h1 className="text-lg font-bold text-gray-600 lg:text-3xl">{recipe.strMeal}</h1>
+        <h1 className="text-lg font-bold  lg:text-3xl">{recipe.strMeal}</h1>
         <ul className="italic  text-sm lg:text-lg">
           <li>{recipe.strArea}</li>
           <li>{recipe.strCategory} </li>
