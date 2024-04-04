@@ -1,16 +1,13 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import { getServerSession } from "next-auth";
+"use client"
 import GoToProfile from "./Actions/GoToProfile";
 import JoinUsBtn from "./Actions/JoinUsBtn";
 import SignoutBtn from "./Actions/SignoutBtn";
 
 
-export default async function UserHero() {
-    const session = await getServerSession(authOptions)
+export default function UserHero({session}) {
 
-    if (session?.status === "loading") return <h1>Loading...</h1>
-
-
+    //continue from herer
+   
     return (
         <div className="">
             {session?.user ?
