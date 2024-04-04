@@ -1,4 +1,3 @@
-"use client"
 import { Button } from "@/components/ui/button"
 import {
     Drawer,
@@ -13,16 +12,18 @@ import {
 import SignoutBtn from "./Actions/SignoutBtn"
 import { RecipeFromDB } from "@/lib/props"
 import UserSaves from "./UserSaves"
-import { useEffect } from "react"
-import grabUserData from "@/controllers/grabUserData"
+
+interface UserCompProps {
+    user: any
+}
 
 
-export default function UserComp({ session }: any) {
+export default function UserComp({ user }: UserCompProps) {
 
     return (
         <Drawer>
             <DrawerTrigger asChild>
-                <Button variant="ghost">Hello, {session?.user?.name}</Button>
+                <Button variant="ghost">Hello, {user.name}</Button>
             </DrawerTrigger>
             <DrawerContent>
                 <div className="mx-auto w-full">

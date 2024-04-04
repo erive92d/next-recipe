@@ -11,10 +11,10 @@ import { PeopleChoiceType } from '@/lib/props';
 
 type CarouselProp = {
     items: PeopleChoiceType[]
+
 }
 
 const CarouselItems = ({ items }: CarouselProp) => {
-
     const settings = {
         dots: true,
         infinite: true,
@@ -38,7 +38,7 @@ const CarouselItems = ({ items }: CarouselProp) => {
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
-                    initialSlide: 1
+                    initialSlide: 0
                 }
             }
         ]
@@ -53,7 +53,7 @@ const CarouselItems = ({ items }: CarouselProp) => {
                     <Link href={`/recipe/${item.id}`}
                         className=' text-center text-black'>{item.name}
                     </Link>
-                    <Image className='rounded-lg' src={`${item.image}/preview`} unoptimized height={350} width={350} alt="recipeThumb" />
+                    <Image className={`rounded-lg`} src={`${item.image}/preview`} unoptimized height={350} width={350} alt="recipeThumb" />
                 </div>
             ))}
         </Slider>

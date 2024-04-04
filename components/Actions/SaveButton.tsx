@@ -6,6 +6,7 @@ import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import ValidateSaveBtn from "@/helpers/ValidateSaveBtn";
+import { Button } from "../ui/button";
 
 type SaveType = {
   recipe: RecipeProps
@@ -57,12 +58,7 @@ export default function SaveButton({ recipe }: SaveType) {
 
   }
 
-  return (
-    <div>
-      <button onClick={handleSave} className='btn btn-sm text-white btn-success'>
-        <MdOutlineFavorite />
-      </button>
-    </div>
-
-  )
+  return <Button variant={"outline"} onClick={handleSave}>
+    Save this recipe <MdOutlineFavorite />
+  </Button>
 }

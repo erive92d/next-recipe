@@ -13,7 +13,6 @@ export async function GET(req: NextRequest, res: NextResponse) {
         await dbConnect()
         // const recipes = await Recipe.findOne({})
         const recipes = await Recipe.find({}).populate('users')
-        console.log(recipes)
 
         if (!recipes) {
             console.log("no recipe")

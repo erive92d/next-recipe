@@ -36,7 +36,6 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
             return NextResponse.json(createBasket, { status: 200 })
 
         }
-        console.log(basket, "basket")
 
         basket.save()
 

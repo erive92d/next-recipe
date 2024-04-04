@@ -14,8 +14,6 @@ interface RecipeDisplayProps {
 
 export default function RecipeDisplay({ recipe }: RecipeDisplayProps) {
 
-    console.log(recipe, "@@")
-
     const arrayIng = []
     for (let i = 1; i < 20; i++) {
         let ing = recipe[`strIngredient${i}`]
@@ -62,6 +60,9 @@ export default function RecipeDisplay({ recipe }: RecipeDisplayProps) {
                     <p className=' font-thin '>
                         {recipe.strInstructions}
                     </p>
+                </div>
+                <div className=''>
+                    <SaveButton recipe={recipe} />
                 </div>
             </div>
 

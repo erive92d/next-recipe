@@ -6,7 +6,6 @@ import { useSession } from 'next-auth/react'
 export default function ProfileComp() {
     const [userData, setUserData] = useState(null)
     const session = useSession()
-    console.log(session)
     // useEffect(() => {
 
     // })

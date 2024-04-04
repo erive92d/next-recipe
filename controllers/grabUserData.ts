@@ -6,9 +6,9 @@ import { headers } from 'next/headers'
 export default async function grabUserData() {
 
     try {
-        const response = await fetch(`${process.env.NEXTAUTH_URL}/api/userdata`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/userdata`, {
             cache: "no-store",
-            headers: headers()
+            // headers: headers()
         })
 
         if (!response.ok) {
@@ -17,7 +17,7 @@ export default async function grabUserData() {
 
         return await response.json()
     } catch (error) {
-        throw new Error("Failed to get user data")
+        console.error(error)
     }
 
 }
