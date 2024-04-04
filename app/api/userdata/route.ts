@@ -24,9 +24,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
 
     try {
         await dbConnect()
-        // const recipes = await Recipe.findOne({})
         const recipes = await Recipe.find({ users: userId })
-        // console.log(recipes, "@@")
 
         if (!recipes) {
             return new NextResponse("No recipe found", { status: 400 })
