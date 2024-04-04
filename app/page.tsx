@@ -6,7 +6,7 @@ export default async function Home() {
 
   return (
 
-    <div className='lg:w-4/5 mx-auto py-10'>
+    <div className='lg:w-4/5 mx-auto py-10 text-black'>
       {/* <RandomRecipe /> */}
       <PeopleChoice />
 

@@ -73,7 +73,7 @@ export type PeopleChoiceType = {
   name: string,
   image: string,
   users: string[],
-
+}
 
 export interface RecipeFromDB {
   _id: string 

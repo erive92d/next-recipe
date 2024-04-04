@@ -49,9 +49,9 @@ const CarouselItems = ({ items }: CarouselProp) => {
             {items.map((item, index) => (
                 <div
                     key={index}
-                    className='font-thin text-center py-4'>
+                    className='font-thin py-4'>
                     <Link href={`/recipe/${item.id}`}
-                        className=''>{item.name}
+                        className=' text-center text-black'>{item.name}
                     </Link>
                     <Image className='rounded-lg' src={`${item.image}/preview`} unoptimized height={350} width={350} alt="recipeThumb" />
                 </div>
