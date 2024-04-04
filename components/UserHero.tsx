@@ -11,13 +11,22 @@ import {
     DrawerTrigger,
 } from "@/components/ui/drawer"
 import SignoutBtn from "./Actions/SignoutBtn"
-import { RecipeFromDB } from "@/lib/props"
-import UserSaves from "./UserSaves"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import grabUserData from "@/controllers/grabUserData"
+import { RecipeFromDB } from "@/lib/props"
 
 
 export default function UserComp({ session }: any) {
+
+    const [recipes, setRecipes] = useState<RecipeFromDB[]>([])
+
+    useEffect(() => {
+        const fetchByUserId = async () => {
+            const response = await grabUserData()
+            setRecipes(response)
+        }
+        fetchByUserId()
+    })
 
     return (
         <Drawer>
@@ -31,7 +40,11 @@ export default function UserComp({ session }: any) {
                         {/* <DrawerDescription>Set your daily activity goal.</DrawerDescription> */}
                     </DrawerHeader>
                     <div className="p-4 pb-0">
-
+                        {recipes.map((recipe, index) => (
+                            <div key={index}>
+                                {recipe.name}
+                            </div>
+                        ))}
                         {/* <UserSaves /> */}
                     </div>
                     <DrawerFooter>

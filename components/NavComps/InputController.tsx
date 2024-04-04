@@ -16,8 +16,7 @@ export default function InputController() {
     return (
         <div>
             {showInput ?
-                <div className='bg-white flex justify-between rounded px-2 items-center text-gray-700'>
-                    {/* <input type="text" className="input input-sm input-ghost bg-white outline-none focus:outline-none px-2" /> */}
+                <div className=' flex justify-between rounded px-2 items-center text-gray-700'>
                     <InputComp handleClick={handleClick} />
                 </div>
                 :
@@ -25,7 +24,6 @@ export default function InputController() {
                     <button onClick={handleClick}>
                         <FaSearch />
                     </button>
-                    {/* <SearchComp /> */}
                 </>
 
             }

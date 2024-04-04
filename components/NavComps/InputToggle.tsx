@@ -1,4 +1,6 @@
 "use client"
+import { FaSearch } from "react-icons/fa";
+
 import useDebounce from '@/helpers/useDebounce'
 import { getMealByName } from '@/lib/api'
 import { RecipeProps } from '@/lib/props'
@@ -6,11 +8,21 @@ import Link from '@/node_modules/next/link'
 import React, { useEffect, useState } from 'react'
 import { IoIosCloseCircleOutline } from "react-icons/io";
 
-interface InputProp {
-    handleClick: (e: React.MouseEvent<HTMLButtonElement | HTMLDivElement>) => void
-}
+import { Button } from "@/components/ui/button"
+import {
+    Dialog,
+    DialogClose,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 
-export default function InputComp({ handleClick }: InputProp) {
+export function InputToggle() {
 
     const [inputText, setInputText] = useState<string>("")
     const [searchResult, setResult] = useState<RecipeProps[] | null>(null)
@@ -41,19 +53,32 @@ export default function InputComp({ handleClick }: InputProp) {
         setInputText(e.currentTarget.value)
     }
 
-
     return (
-        <div className='relative '>
-            <div className="flex">
-                <input onChange={handleChange} placeholder='search..' type="text" className="italic border px-2" />
-                <button onClick={handleClick}>
-                    <IoIosCloseCircleOutline />
-                </button>
-            </div>
-            <div className='absolute z-10 text-sm shadow-lg'>
+        <Dialog>
+            <DialogTrigger asChild>
+                <Button variant={"ghost"}>
+                    <FaSearch />
+                </Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-md">
+                <DialogHeader>
+                    <DialogTitle>Search for a recipe</DialogTitle>
+                </DialogHeader>
+                <div className="flex items-center space-x-2">
+                    <div className="grid flex-1 gap-2">
+                        <Label htmlFor="link" className="sr-only">
+                            Link
+                        </Label>
+                        <Input
+                            onChange={handleChange}
+                            id="link"
+                            placeholder="recipe name"
+                        />
+                    </div>
+                </div>
                 {error && <h1 className='text-gray-500 italic'>{error}</h1>}
                 {searchResult ? searchResult.map((result) => (
-                    <div onClick={handleClick} className='bg-white border-b px-4' key={result.idMeal}>
+                    <div className='bg-white border-b px-4' key={result.idMeal}>
                         <Link href={`/recipe/${result.idMeal}`} className=" flex gap-2 items-center">
                             <h1>{result.strMeal} </h1>
                             <span className='badge badge-warning badge-sm text-white'> {result.strArea}</span>
@@ -64,7 +89,7 @@ export default function InputComp({ handleClick }: InputProp) {
                     :
                     null
                 }
-            </div>
-        </div>
+            </DialogContent>
+        </Dialog>
     )
 }

@@ -20,28 +20,6 @@ interface UserSavesProp {
 }
 
 export default function UserSaves() {
-    const session = useSession()
-    const userId = session?.data?.user?._id
-
-    // const email = "rain@test.com"
-
-    // useEffect(() => {
-    //     const fetchByUserId = async () => {
-    //         const response = await fetch(`/api/recipeapi/recipesaves?userId=${userId ? userId : null}`, {
-    //             method: "GET",
-    //             cache: "no-store"
-    //         })
-    //         if (!response.ok) {
-    //             throw new Error("Error")
-    //         }
-    //         const data = await response.json()
-    //         console.log(data)
-    //     }
-    //     if (userId) {
-    //         fetchByUserId()
-    //     }
-
-    // }, [userId])
 
     return (
         <Table>

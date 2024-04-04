@@ -1,9 +1,8 @@
 
-export default async function grabSaves(email: string | null) {
-    console.log(email, "GSDGSDG")
+export default async function grabSaves() {
 
     try {
-        const response = await fetch(`${process.env.NEXTAUTH_URL}/api/recipeapi/recipesaves?email=${email ? email : null}`, {
+        const response = await fetch(`${process.env.NEXTAUTH_URL}/api/recipeapi/recipesaves`, {
             method: "GET",
             cache: "no-store"
         })

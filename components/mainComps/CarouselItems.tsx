@@ -27,7 +27,7 @@ const CarouselItems = ({ items }: CarouselProp) => {
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 2,
+                    slidesToShow: 3,
                     slidesToScroll: 1,
                     infinite: true,
                     dots: true
@@ -35,6 +35,13 @@ const CarouselItems = ({ items }: CarouselProp) => {
             },
             {
                 breakpoint: 768,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    initialSlide: 0
+                }
+            }, {
+                breakpoint: 350,
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
@@ -53,7 +60,7 @@ const CarouselItems = ({ items }: CarouselProp) => {
                     <Link href={`/recipe/${item.id}`}
                         className=' text-center text-black'>{item.name}
                     </Link>
-                    <Image className={`rounded-lg`} src={`${item.image}/preview`} unoptimized height={350} width={350} alt="recipeThumb" />
+                    <Image className={`lg:w-80 rounded-lg`} src={`${item.image}/preview`} unoptimized height={200} width={200} alt="recipeThumb" />
                 </div>
             ))}
         </Slider>

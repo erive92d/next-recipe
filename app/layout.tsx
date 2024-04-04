@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import Navigation from '@/components/NavComps/Navigation'
 import NextAuthProvider from '@/Provider'
 import ServerNav from '@/components/NavComps/ServerNav'
 
@@ -20,7 +19,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className="bg-white min-h-screen">
+      <body className="bg-white min-h-screen lg:w-4/5 mx-auto">
         <NextAuthProvider>
           <div className='relative'>
             <header>

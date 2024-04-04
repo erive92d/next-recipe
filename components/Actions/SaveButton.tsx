@@ -5,14 +5,15 @@ import { RecipeProps } from '@/lib/props'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
-import ValidateSaveBtn from "@/helpers/ValidateSaveBtn";
 import { Button } from "../ui/button";
+import grabUserData from "@/controllers/grabUserData";
 
 type SaveType = {
   recipe: RecipeProps
 }
 
 export default function SaveButton({ recipe }: SaveType) {
+  const [isSaved, setIsSaved] = useState<boolean>(false)
   const router = useRouter()
   const session = useSession()
   const currentUser = session?.data?.user
@@ -20,7 +21,6 @@ export default function SaveButton({ recipe }: SaveType) {
   if (!session.data) {
     return
   }
-
 
   const handleSave = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
@@ -31,7 +31,6 @@ export default function SaveButton({ recipe }: SaveType) {
         router.push("/auth/login")
       }
     }
-
 
     const userData = {
       id: recipe.idMeal,
@@ -51,9 +50,8 @@ export default function SaveButton({ recipe }: SaveType) {
     })
 
     if (response.ok) {
-      router.refresh()
       alert("Recipe has been saved")
-
+      router.refresh()
     }
 
   }
