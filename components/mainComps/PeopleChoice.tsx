@@ -9,7 +9,7 @@ export default async function PeopleChoice() {
     const sortedSaves = save.sort((a, b) => (b.users.length - a.users.length))
     const slicedSave = sortedSaves.slice(0, 4)
     return (
-        <div className="min-h-screen">
+        <div className="border-b py-14">
             <h1 className="text-2xl font-bold py-10 px-2 text-center">Trending</h1>
             <div className="flex flex-col items-center lg:flex-row gap-2 px-2">
                 {slicedSave ?

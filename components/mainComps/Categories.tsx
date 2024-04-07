@@ -6,45 +6,44 @@ import { CatProps } from '@/lib/props'
 import CategoryLogo from '@/helpers/categoryLogo'
 
 
-
 export default async function Categories() {
 
     const res = await getCategories()
-    if(!res) return <h1>Loading...</h1>
+    if (!res) return <h1>Loading...</h1>
     const { meals }: CatProps = res
     const slicedMeals = meals.slice(0, 6)
 
     return (
-        <div className='text-gray-600 font-bold '>
-            <div className='flex text-white px-2 py-4 justify-between items-center'>
-                <h1 className='text-3xl italic font-sans py-2 font-bold px-6 text-gray-800'>
+        <div className='font-bold py-10 space-y-8'>
+            <div className='  px-2 py-4 text-center'>
+                <h1 className='text-2xl font-sans py-2 font-bold '>
                     Popular Categories
                 </h1>
-                <Link href="/categories" className='btn lg:hidden btn-xs btn-ghost rounded-xl bg-green-500 font-bold text-white'>Show all</Link>
+                <Link href="/categories" className='lg:hidden underline text-sm font-light '>more</Link>
             </div>
             {/* LARGE */}
-            <div className='hidden lg:p-8 lg:flex'>
+            <div className='hidden lg:flex overflow-auto'>
                 {meals && meals.map((cat, index) => (
-                     <div key={index} className="w-2/6  p-2 ">
-                        <div className=' flex flex-col justify-center py-2 items-center bg-gray-200 bg-opacity-80 rounded '>
-                            <Link href={`/items/${cat.strCategory}`} className="flex flex-col items-center text-gray-800">
-                                <span className='text-3xl '><CategoryLogo categoryName={cat.strCategory}/></span>
+                    <div key={index} className="w-2/6 p-2 ">
+                        <div className='flex flex-col justify-center p-8 items-center border-2 h-40 w-40 rounded-full '>
+                            <Link href={`/items/${cat.strCategory}`} className="flex flex-col items-center ">
+                                <span className='text-3xl '><CategoryLogo categoryName={cat.strCategory} /></span>
                                 <h2 className="">{cat.strCategory}</h2>
-                                <MealAmount cat={cat.strCategory} />
+                                {/* <MealAmount cat={cat.strCategory} /> */}
                             </Link>
                         </div>
-                 </div>
+                    </div>
                 ))}
             </div>
             {/* MOBILE */}
             <div className='flex flex-wrap p-4 lg:hidden '>
                 {slicedMeals && slicedMeals.map((cat, index) => (
                     <div key={index} className="w-2/6  p-2 ">
-                        <div className=' flex flex-col justify-center py-2 items-center bg-gray-200 bg-opacity-80 rounded '>
+                        <div className='flex flex-col justify-center p-8 items-center '>
                             <Link href={`/items/${cat.strCategory}`} className="flex flex-col items-center text-gray-800">
-                                <span className='text-3xl'><CategoryLogo categoryName={cat.strCategory}/></span>
+                                <span className='text-3xl'><CategoryLogo categoryName={cat.strCategory} /></span>
                                 <h2 className="">{cat.strCategory}</h2>
-                                <MealAmount cat={cat.strCategory} />
+                                {/* <MealAmount cat={cat.strCategory} /> */}
                             </Link>
                         </div>
                     </div>
