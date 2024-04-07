@@ -1,7 +1,7 @@
 "use client"
 import { MdOutlineFavorite } from "react-icons/md";
 
-import { RecipeProps } from '@/lib/props'
+import { RecipeFromDB, RecipeProps } from '@/lib/props'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
@@ -17,6 +17,15 @@ export default function SaveButton({ recipe }: SaveType) {
   const router = useRouter()
   const session = useSession()
   const currentUser = session?.data?.user
+
+  useEffect(() => {
+    const checkIfSaved = async () => {
+      const recipes: RecipeFromDB[] = await grabUserData()
+      setIsSaved(recipes.some(item => item.id === recipe.idMeal))
+    }
+
+    checkIfSaved()
+  }, [recipe])
 
   if (!session.data) {
     return
@@ -56,7 +65,16 @@ export default function SaveButton({ recipe }: SaveType) {
 
   }
 
-  return <Button variant={"outline"} onClick={handleSave}>
-    Save this recipe <MdOutlineFavorite />
-  </Button>
+  return (
+    <>
+      {isSaved ? <Button >Saved</Button>
+        :
+        <Button variant={"outline"} onClick={handleSave}>
+          Save this recipe <MdOutlineFavorite />
+        </Button>
+      }
+    </>
+  )
+
+
 }

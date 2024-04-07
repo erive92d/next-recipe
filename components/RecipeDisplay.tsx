@@ -29,7 +29,7 @@ export default function RecipeDisplay({ recipe }: RecipeDisplayProps) {
     }
 
     return (
-        <div className='min-h-screen gap-6 flex flex-col items-center justify-center'>
+        <div className='min-h-screen gap-6 flex flex-col items-center justify-center py-4'>
             <div className='flex flex-col items-center py-4'>
                 <h1 className='text-3xl font-light'>{recipe.strMeal}</h1>
                 <div className='flex gap-2 font-thin'>
