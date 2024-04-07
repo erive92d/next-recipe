@@ -9,20 +9,10 @@ import { getServerSession } from 'next-auth'
 
 export async function GET(req: NextRequest, res: NextRequest) {
 
-    // const userId = req.nextUrl.searchParams.get("userId")
-    // console.log(userId, "test")
-    // const response = req.nextUrl.searchParams.get("userId")
-    // console.log(response,"@@@")
+
     try {
         await dbConnect()
         const recipes = await Recipe.find()
-
-        // let recipes: [] = []
-        // if (email) {
-        //     recipes = await Recipe.find({ users: email })
-        // } else {
-        //     recipes = await Recipe.find()
-        // }
 
         if (!recipes) {
             throw new Error("No recipe found")

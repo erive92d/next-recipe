@@ -6,7 +6,7 @@ import { PeopleChoiceType } from "@/lib/props";
 
 export default async function PeopleChoice() {
     const save: PeopleChoiceType[] = await grabSaves()
-    const sortedSaves = save.sort((a, b) => (b.users.length - a.users.length))
+    const sortedSaves = save?.sort((a, b) => (b.users.length - a.users.length))
     const slicedSave = sortedSaves.slice(0, 4)
     return (
         <div className="border-b py-14">
