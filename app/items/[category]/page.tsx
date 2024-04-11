@@ -42,7 +42,7 @@ export default async function page({ params: { category } }: ParamProps) {
             </div>
             <div className='flex flex-wrap lg:p-6 '>
                 {data.meals.map((rec) => (
-                    <div key={rec.idMeal} className='p-2 card w-2/4 lg:w-1/4'>
+                    <div key={rec.idMeal} className='p-2 card w-2/4 md:w-1/3 lg:w-1/4'>
                         <div className="bg-white h-80 lg:h-96">
                             <figure className="">
                                 <Image unoptimized width={50} height={50} src={`${rec.strMealThumb}/preview`} alt="Image not available" className="lg:h-80 w-full" />

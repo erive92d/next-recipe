@@ -8,7 +8,6 @@ export default async function grabUserData() {
         if (!response.ok) {
             throw new Error("error")
         }
-
         return await response.json()
     } catch (error) {
         console.error(error)
